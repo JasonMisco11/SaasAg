@@ -5,14 +5,24 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-export const metadata: Metadata = {
-  title: "Magic UI",
-  description: "The startup template from Magic UI",
-};
+const fontSans =
+  FontSans(
+    {
+      subsets:
+        [
+          "latin",
+        ],
+      variable:
+        "--font-sans",
+    }
+  );
+export const metadata: Metadata =
+  {
+    title:
+      "Magic UI",
+    description:
+      "The startup template from Magic UI",
+  };
 
 export default function RootLayout({
   children,
@@ -20,15 +30,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           disableTransitionOnChange
-          // forcedTheme="dark"
+          forcedTheme="light"
         >
-          {children}
+          {
+            children
+          }
           <Toaster />
         </ThemeProvider>
       </body>
