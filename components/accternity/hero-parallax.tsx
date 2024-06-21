@@ -129,7 +129,7 @@ export const HeroParallax = ({
     <div
       ref={ref}
       className={cn(
-        "h-[310vh] pt-52 pb-72 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
+        "h-[250vh] xl:h-[240vh] 2xl:h-[310vh] pt-52 pb-72 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
       )}
     >
       {/* <Header /> */}
