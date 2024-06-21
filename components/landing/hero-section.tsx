@@ -23,7 +23,7 @@ export default function HeroSection() {
         We Code Your Stunning Web Designs
         <br className="hidden md:block" /> Pixel-Perfectly
       </h1>
-      <p className="mb-7 lg:mb-14 text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+      <p className="mb-7 lg:mb-14 text-base text-gray-400 md:text-2xl md:text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
         Unlimited coding for a fixed monthly fee. We hand-code websites
         <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
       </p>

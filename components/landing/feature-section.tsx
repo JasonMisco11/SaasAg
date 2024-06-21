@@ -217,11 +217,11 @@ export function FeatureSection() {
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 opacity-70 blur-[20px] filter"></div>
         </div>
 
-        <h2 className="inline-block bg-gradient-to-br dark:from-white text-left from-black from-30% dark:to-white/40 to-black/40 bg-clip-text pt-12 pb-8 text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-6xl md:text-5xl lg:text-7xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+        <h2 className="inline-block bg-gradient-to-br dark:from-white text-left from-black from-30% dark:to-white/40 to-black/40 bg-clip-text pt-12 pb-8 text-3xl font-medium tracking-tighter text-transparent md:text-balance sm:text-6xl md:text-5xl lg:text-7xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
           Beautiful Design Means Nothing If It&apos;s Poorly Coded{" "}
         </h2>
       </div>
-      <p className="mb-7 lg:mb-14 w-full text-left text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+      <p className="mb-7 lg:mb-14 w-full text-left text-base text-gray-400 md:text-2xl md:text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
         Unlimited coding for a fixed monthly fee. We hand-code websites
         <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
       </p>
