@@ -112,7 +112,7 @@ export const HeroParallax = ({
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = { stiffness: 100, damping: 30, bounce: 100 };
 
   const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
   const translateXReverse = useSpring(
@@ -122,14 +122,14 @@ export const HeroParallax = ({
   const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]), springConfig);
   const opacity = useSpring(useTransform(scrollYProgress, [0, 0.9], [0.9, 1]), springConfig);
   const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0], [0, 0]), springConfig);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-650, 500]), springConfig);
+  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.15], [-650, 650]), springConfig);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <div
       ref={ref}
       className={cn(
-        "h-[230vh] pt-40 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
+        "h-[310vh] pt-52 pb-72 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
       )}
     >
       {/* <Header /> */}
@@ -196,7 +196,15 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0"
+      className={cn(
+        "group/product h-96 w-[30rem] relative flex-shrink-0",
+        "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-3xl",
+        // // light styles
+        // "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
+        // // dark styles
+        // "transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]"
+        "fancy-card"
+      )}
     >
       <Link href={product.link} className="block group-hover/product:shadow-2xl ">
         <Image

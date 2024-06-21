@@ -1,214 +1,151 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { cn } from "@/lib/utils";
-import { CheckIcon } from "@radix-ui/react-icons";
-import { motion } from "framer-motion";
-import { Loader } from "lucide-react";
-import { useState } from "react";
+import { ArrowRightIcon, CheckCircledIcon } from "@radix-ui/react-icons";
+import { memo, useState } from "react";
 
-type Interval = "month" | "year";
+interface PricingOption {
+  name: string;
+  price: string;
+  yearlyPrice: string;
+  description: string;
+  features: string[];
+  extraBenefits?: string;
+}
 
-export const toHumanPrice = (price: number, decimals: number = 2) => {
-  return Number(price / 100).toFixed(decimals);
-};
-const demoPrices = [
-  {
-    id: "price_1",
-    name: "Basic",
-    description: "A basic plan for startups and individual users",
-    features: [
-      "AI-powered analytics",
-      "Basic support",
-      "5 projects limit",
-      "Access to basic AI tools",
-    ],
-    monthlyPrice: 1000,
-    yearlyPrice: 10000,
-    isMostPopular: false,
-  },
-  {
-    id: "price_2",
-    name: "Premium",
-    description: "A premium plan for growing businesses",
-    features: [
-      "Advanced AI insights",
-      "Priority support",
-      "Unlimited projects",
-      "Access to all AI tools",
-      "Custom integrations",
-    ],
-    monthlyPrice: 2000,
-    yearlyPrice: 20000,
-    isMostPopular: true,
-  },
-  {
-    id: "price_5",
-    name: "Enterprise",
-    description:
-      "An enterprise plan with advanced features for large organizations",
-    features: [
-      "Custom AI solutions",
-      "24/7 dedicated support",
-      "Unlimited projects",
-      "Access to all AI tools",
-      "Custom integrations",
-      "Data security and compliance",
-    ],
-    monthlyPrice: 5000,
-    yearlyPrice: 50000,
-    isMostPopular: false,
-  },
-  {
-    id: "price_6",
-    name: "Ultimate",
-    description: "The ultimate plan with all features for industry leaders",
-    features: [
-      "Bespoke AI development",
-      "White-glove support",
-      "Unlimited projects",
-      "Priority access to new AI tools",
-      "Custom integrations",
-      "Highest data security and compliance",
-    ],
-    monthlyPrice: 8000,
-    yearlyPrice: 80000,
-    isMostPopular: false,
-  },
-];
+interface PricingToggleProps {
+  enabled: boolean;
+  setEnabled: (e: boolean) => void;
+  color?: string;
+}
 
-export default function PricingSection() {
-  const [interval, setInterval] = useState<Interval>("month");
-  const [isLoading, setIsLoading] = useState(false);
-  const [id, setId] = useState<string | null>(null);
+interface PricingCardProps {
+  option: PricingOption;
+  enabled: boolean;
+}
 
-  const onSubscribeClick = async (priceId: string) => {
-    setIsLoading(true);
-    setId(priceId);
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate a delay
-    setIsLoading(false);
-  };
+const PricingToggle = memo(({ enabled, setEnabled, color }: PricingToggleProps) => (
+  <div className="flex items-center">
+    <span className={`mr-2 font-bold ${enabled ? "text-neutral-500/60" : ""}`}>Monthly</span>
+    <label className="inline-flex cursor-pointer items-center">
+      <input
+        type="checkbox"
+        checked={enabled}
+        onChange={(e) => setEnabled(e.target.checked)}
+        className="sr-only"
+      />
+      <div
+        className={`inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+          enabled ? `${color}` : "bg-neutral-200 dark:bg-neutral-400"
+        }`}
+      >
+        <span
+          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+            enabled ? "translate-x-6" : "translate-x-1"
+          }`}
+        />
+      </div>
+    </label>
+    <span className={`ml-2 font-bold ${enabled ? "" : "text-neutral-500/60"}`}>Yearly</span>
+  </div>
+));
+
+PricingToggle.displayName = "PricingToggle";
+
+const PricingCard = memo(({ option, enabled }: PricingCardProps) => (
+  <div className="grid h-full w-full grid-cols-1 rounded-xl border border-neutral-300/50 dark:border-neutral-700/50 lg:grid-cols-5">
+    <div className="col-span-2 flex flex-col justify-between gap-y-10 rounded-t-xl bg-neutral-50 p-5 dark:bg-neutral-900 lg:rounded-t-none lg:rounded-bl-xl lg:rounded-tl-xl">
+      <div className="flex flex-col gap-y-2">
+        <p className="text-2xl font-semibold text-black dark:text-white">{option.name}</p>
+        <p className="mx-0 max-w-md font-medium tracking-tight text-neutral-500 dark:text-neutral-400">
+          {option.description}
+        </p>
+      </div>
+      <div className="flex flex-col gap-y-2">
+        <h3 className="text-sm font-medium text-black dark:text-white">
+          <span className="text-3xl font-[620] text-black dark:text-white">
+            {enabled ? option.yearlyPrice : option.price}
+            <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
+              {enabled ? "/year" : "/month"}
+            </span>
+          </span>
+        </h3>
+        <button className="my-2 flex h-10 w-full items-center justify-center rounded-lg border border-neutral-500 bg-neutral-800 text-base font-bold text-white transition duration-100 hover:shadow-md hover:drop-shadow-md dark:bg-neutral-100 dark:text-neutral-800">
+          <span className="tracking-tight">Choose Plan</span>
+          <ArrowRightIcon className="ml-2" />
+        </button>
+      </div>
+    </div>
+    <div className="col-span-3 flex flex-col justify-center gap-y-5 p-5 lg:pl-10">
+      {option.extraBenefits && (
+        <p className="text-[15px] font-medium text-neutral-500">{option.extraBenefits}</p>
+      )}
+      {option.features.map((feature, index) => (
+        <div key={index} className="flex gap-x-3">
+          <div className="flex items-center justify-center">
+            <CheckCircledIcon className="h-6 w-6 text-green-500" />
+          </div>
+          <p className="font-medium text-neutral-900 dark:text-white">{feature}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+));
+
+PricingCard.displayName = "PricingCard";
+
+export default function Pricing() {
+  const [enabled, setEnabled] = useState(false);
+  const pricingOptions: PricingOption[] = [
+    {
+      name: "Free",
+      price: "$0",
+      yearlyPrice: "$0",
+      description:
+        "Let top creative talent come to you by posting your job listing on #1 Design Jobs Board.",
+      features: [
+        "Access to All Features",
+        "20% discount on backorders",
+        "Domain name Appraisal",
+        "10 Social Profiles",
+      ],
+    },
+    {
+      name: "Pro",
+      price: "$499",
+      yearlyPrice: "$1,228",
+      description:
+        "Get your roles filled faster with unlimited access to Dribbble's Job Board and Designer search.",
+      features: [
+        "Access to All Features",
+        "20% discount on backorders",
+        "Domain name Appraisal",
+        "10 Social Profiles",
+      ],
+      extraBenefits: "Everything in free plan, plus",
+    },
+  ];
 
   return (
-    <section id="pricing">
-      <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-14 md:px-8">
+    <section className="mx-auto max-w-5xl py-10">
+      <div className="flex flex-col gap-y-2">
         <div className="mx-auto max-w-5xl text-center">
-          <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">
-            Pricing
-          </h4>
+          <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">Pricing</h4>
 
           <h2 className="text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">
             Simple pricing for everyone.
           </h2>
 
           <p className="mt-6 text-xl leading-8 text-black/80 dark:text-white">
-            Choose an <strong>affordable plan</strong> that&apos;s packed with
-            the best features for engaging your audience, creating customer
-            loyalty, and driving sales.
+            Choose an <strong>affordable plan</strong> that&apos;s packed with the best features for
+            engaging your audience, creating customer loyalty, and driving sales.
           </p>
         </div>
-
-        <div className="flex w-full items-center justify-center space-x-2">
-          <Switch
-            id="interval"
-            onCheckedChange={(checked) => {
-              setInterval(checked ? "year" : "month");
-            }}
-          />
-          <span>Annual</span>
-          <span className="inline-block whitespace-nowrap rounded-full bg-black px-2.5 py-1 text-[11px] font-semibold uppercase leading-5 tracking-wide text-white dark:bg-white dark:text-black">
-            2 MONTHS FREE ✨
-          </span>
+        <div className="mt-5 flex justify-center">
+          <PricingToggle enabled={enabled} setEnabled={setEnabled} color="bg-green-500" />
         </div>
-
-        <div className="mx-auto grid w-full justify-center sm:grid-cols-2 lg:grid-cols-4 flex-col gap-4">
-          {demoPrices.map((price, idx) => (
-            <div
-              key={price.id}
-              className={cn(
-                "relative flex max-w-[400px] flex-col gap-8 rounded-2xl border p-4 text-black dark:text-white overflow-hidden",
-                {
-                  "border-2 border-[var(--color-one)] dark:border-[var(--color-one)]":
-                    price.isMostPopular,
-                }
-              )}
-            >
-              <div className="flex items-center">
-                <div className="ml-4">
-                  <h2 className="text-base font-semibold leading-7">
-                    {price.name}
-                  </h2>
-                  <p className="h-12 text-sm leading-5 text-black/70 dark:text-white">
-                    {price.description}
-                  </p>
-                </div>
-              </div>
-
-              <motion.div
-                key={`${price.id}-${interval}`}
-                initial="initial"
-                animate="animate"
-                variants={{
-                  initial: {
-                    opacity: 0,
-                    y: 12,
-                  },
-                  animate: {
-                    opacity: 1,
-                    y: 0,
-                  },
-                }}
-                transition={{
-                  duration: 0.4,
-                  delay: 0.1 + idx * 0.05,
-                  ease: [0.21, 0.47, 0.32, 0.98],
-                }}
-                className="flex flex-row gap-1"
-              >
-                <span className="text-4xl font-bold text-black dark:text-white">
-                  $
-                  {interval === "year"
-                    ? toHumanPrice(price.yearlyPrice, 0)
-                    : toHumanPrice(price.monthlyPrice, 0)}
-                  <span className="text-xs"> / {interval}</span>
-                </span>
-              </motion.div>
-
-              <Button
-                className={cn(
-                  "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
-                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2"
-                )}
-                disabled={isLoading}
-                onClick={() => void onSubscribeClick(price.id)}
-              >
-                <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform-gpu bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-96 dark:bg-black" />
-                {(!isLoading || (isLoading && id !== price.id)) && (
-                  <p>Subscribe</p>
-                )}
-
-                {isLoading && id === price.id && <p>Subscribing</p>}
-                {isLoading && id === price.id && (
-                  <Loader className="mr-2 h-4 w-4 animate-spin" />
-                )}
-              </Button>
-
-              <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-500/30 to-neutral-200/0" />
-              {price.features && price.features.length > 0 && (
-                <ul className="flex flex-col gap-2 font-normal">
-                  {price.features.map((feature: any, idx: any) => (
-                    <li
-                      key={idx}
-                      className="flex items-center gap-3 text-xs font-medium text-black dark:text-white"
-                    >
-                      <CheckIcon className="h-5 w-5 shrink-0 rounded-full bg-green-400 p-[2px] text-black dark:text-white" />
-                      <span className="flex">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+        <div className="mx-auto grid h-full w-full max-w-4xl place-content-center items-center gap-6 px-10 py-8 lg:items-start">
+          {pricingOptions.map((option, index) => (
+            <PricingCard key={index} option={option} enabled={enabled} />
           ))}
         </div>
       </div>
