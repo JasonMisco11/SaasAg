@@ -126,18 +126,18 @@ export default function Pricing() {
   ];
 
   return (
-    <section className="mx-auto max-w-5xl py-10">
+    <section className="mx-auto max-w-5xl pt-28 pb-40">
       <div className="flex flex-col gap-y-2">
         <div className="mx-auto max-w-5xl text-center">
-          <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">Pricing</h4>
+          {/* <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">Pricing</h4> */}
 
-          <h2 className="text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">
-            Simple pricing for everyone.
+          <h2 className="bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text pt-12 pb-8 text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-6xl md:text-5xl lg:text-7xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+            Pric{" "}
           </h2>
 
-          <p className="mt-6 text-xl leading-8 text-black/80 dark:text-white">
-            Choose an <strong>affordable plan</strong> that&apos;s packed with the best features for
-            engaging your audience, creating customer loyalty, and driving sales.
+          <p className="text-xl leading-8 text-black/80 dark:text-white text-balance">
+            We take extra care to ensure your designs are flawlessly coded. But don&apos;t take our
+            word for it—here&apos;s what our past clients have said about us.{" "}
           </p>
         </div>
         <div className="mt-5 flex justify-center">

@@ -19,11 +19,11 @@ export default function HeroSection() {
           <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </ShinyButton>
       </div>
-      <h1 className="bg-gradient-to-br dark:from-white from-black from-30% dark:to-white/40 to-black/40 bg-clip-text pt-12 pb-8 text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+      <h1 className="bg-gradient-to-br dark:from-white from-black from-30% dark:to-white/40 to-black/40 bg-clip-text py-6 lg:py-12 text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
         We Code Your Stunning Web Designs
         <br className="hidden md:block" /> Pixel-Perfectly
       </h1>
-      <p className="mb-12 text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+      <p className="mb-7 lg:mb-14 text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
         Unlimited coding for a fixed monthly fee. We hand-code websites
         <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
       </p>

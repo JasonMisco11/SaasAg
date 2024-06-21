@@ -12,7 +12,7 @@ import {
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
 import { CalendarIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
-import { Share2Icon } from "lucide-react";
+import { Globe, InfinityIcon, Share2Icon } from "lucide-react";
 import { AnimatedBeamMultipleOutputDemo } from "../magicui/animated-beam-multiple-outputs";
 import { BentoCard, BentoGrid } from "../magicui/bento-grid";
 
@@ -118,11 +118,12 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
 
 const features = [
   {
-    Icon: FileTextIcon,
-    name: "Save your files",
-    description: "We automatically save your files as you type.",
+    Icon: InfinityIcon,
+    name: "Unlimited Requests",
+    description:
+      "Submit as many coding requests as you need. Your first coded page will be ready within 48 hours.",
     href: "/",
-    cta: "Learn more",
+    cta: "Payment securely done via Stripe",
     className: "col-span-3 lg:col-span-1",
     background: (
       <Marquee
@@ -152,11 +153,11 @@ const features = [
   },
   {
     Icon: InputIcon,
-    name: "Full text search",
-    description: "Search through all your files in one place.",
+    name: "Quick Turnaround",
+    description: "Receive your coded websites in just a few business days, Monday to Friday.",
     href: "/",
-    cta: "Learn more",
-    className: "col-span-3 lg:col-span-2",
+    cta: "Communication done via Trello",
+    className: "col-span-3 lg:col-span-1",
     background: (
       <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
         <CommandInput placeholder="Type a command or search..." />
@@ -176,43 +177,65 @@ const features = [
   },
   {
     Icon: Share2Icon,
-    name: "Integrations",
-    description: "Supports 100+ integrations and counting.",
+    name: "High-Quality Code",
+    description: "We deliver well-organized and documented source code, ready for deployment.",
     href: "/",
-    cta: "Learn more",
-    className: "col-span-3 lg:col-span-2",
+    cta: "Delivered in Next.js & Tailwind CSS",
+    className: "col-span-3 lg:col-span-1",
     background: (
       <AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] w-[600px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
     ),
   },
-  {
-    Icon: CalendarIcon,
-    name: "Calendar",
-    description: "Use the calendar to filter your files by date.",
-    className: "col-span-3 lg:col-span-1",
-    href: "/",
-    cta: "Learn more",
-    background: (
-      <Calendar
-        mode="single"
-        selected={new Date(2022, 4, 11, 0, 0, 0)}
-        className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
-      />
-    ),
-  },
+  // {
+  //   Icon: CalendarIcon,
+  //   name: "Flexible Plans",
+  //   description: "Pause or cancel your subscription anytime. No long-term commitment.",
+  //   className: "col-span-3 lg:col-span-1",
+  //   href: "/",
+  //   cta: "Learn more",
+  //   background: (
+  //     <Calendar
+  //       mode="single"
+  //       selected={new Date(2022, 4, 11, 0, 0, 0)}
+  //       className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
+  //     />
+  //   ),
+  // },
 ];
 
-export function TestimonialSection() {
+export function FeatureSection() {
   return (
-    <div className="z-[999999] max-w-[60rem] mx-auto mt-10 w-full flex flex-col gap-10 items-center justify-center">
-      <h1 className="bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text pt-12 pb-8 text-2xl font-medium tracking-tighter text-transparent text-balance sm:text-6xl md:text-5xl lg:text-7xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-        Beautiful Design Means Nothing If It&apos;s Poorly Coded{" "}
-      </h1>
-      <BentoGrid className="">
+    <div className="z-50 relative max-w-[60rem] mx-auto px-12 pt-12 w-full flex flex-col items-center justify-center">
+      <div className="">
+        <div
+          className={cn(
+            "inline-block w-fit relative top-0 left-0 mr-6 size-20 cursor-pointer overflow-hidden rounded-2xl border p-4"
+          )}
+        >
+          <Globe className="size-full" />
+
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 opacity-70 blur-[20px] filter"></div>
+        </div>
+
+        <h2 className="inline-block bg-gradient-to-br dark:from-white text-left from-black from-30% dark:to-white/40 to-black/40 bg-clip-text pt-12 pb-8 text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-6xl md:text-5xl lg:text-7xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+          Beautiful Design Means Nothing If It&apos;s Poorly Coded{" "}
+        </h2>
+      </div>
+      <p className="mb-7 lg:mb-14 w-full text-left text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+        Unlimited coding for a fixed monthly fee. We hand-code websites
+        <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
+      </p>
+
+      <BentoGrid className="gap-8 border-b pb-20 mb-20 border-b-white/10">
         {features.map((feature, idx) => (
           <BentoCard key={idx} {...feature} />
         ))}
       </BentoGrid>
+      <p className="w-full text-left text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+        {/* We take extra care to ensure your designs are flawlessly coded.{" "}
+        <br className="hidden md:block" /> */}
+        But don&apos;t take our word for it—here&apos;s what our clients say.
+      </p>
     </div>
   );
 }

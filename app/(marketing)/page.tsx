@@ -1,11 +1,12 @@
 import { HeroParallax, products } from "@/components/accternity/hero-parallax";
 import ClientSection from "@/components/landing/client-section";
 import CallToActionSection from "@/components/landing/cta-section";
+import { FeatureSection } from "@/components/landing/feature-section";
 import HeroSection from "@/components/landing/hero-section";
 import PricingSection from "@/components/landing/pricing-section";
 import Particles from "@/components/magicui/particles";
 import { SphereMask } from "@/components/magicui/sphere-mask";
-import { TestimonialSection } from "@/components/landing/testimonial-section";
+import { TestimonialSection } from "@/components/magicui/testimonial-section";
 
 export default async function Page() {
   return (
@@ -14,6 +15,7 @@ export default async function Page() {
       <HeroParallax products={products} />
       <ClientSection />
       <SphereMask />
+      <FeatureSection />
       <TestimonialSection />
       <PricingSection />
       <CallToActionSection />
