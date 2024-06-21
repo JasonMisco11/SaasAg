@@ -3,6 +3,7 @@ import ClientSection from "@/components/landing/client-section";
 import CallToActionSection from "@/components/landing/cta-section";
 import HeroSection from "@/components/landing/hero-section";
 import PricingSection from "@/components/landing/pricing-section";
+import TestimonialSection from "@/components/landing/testimonial-section";
 import Particles from "@/components/magicui/particles";
 import { SphereMask } from "@/components/magicui/sphere-mask";
 
@@ -13,6 +14,7 @@ export default async function Page() {
       <HeroParallax products={products} />
       <ClientSection />
       <SphereMask />
+      <TestimonialSection />
       <PricingSection />
       <CallToActionSection />
       <Particles
