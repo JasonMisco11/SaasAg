@@ -1,3 +1,4 @@
+import { HeroParallax, products } from "@/components/accternity/hero-parallax";
 import ClientSection from "@/components/landing/client-section";
 import CallToActionSection from "@/components/landing/cta-section";
 import HeroSection from "@/components/landing/hero-section";
@@ -9,6 +10,7 @@ export default async function Page() {
   return (
     <>
       <HeroSection />
+      <HeroParallax products={products} />
       <ClientSection />
       <SphereMask />
       <PricingSection />
