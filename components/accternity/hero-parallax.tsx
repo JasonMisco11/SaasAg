@@ -123,7 +123,11 @@ export const HeroParallax = ({
   const opacity = useSpring(useTransform(scrollYProgress, [0, 0.9], [0.9, 1]), springConfig);
   const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0], [0, 0]), springConfig);
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.15], [-650, window.innerWidth > 768 ? 650 : 150]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.15],
+      [-650, window.innerWidth > 768 ? 650 : window.innerWidth > 480 ? 10 : 150]
+    ),
     springConfig
   );
   const inView = useInView(ref, { once: true, margin: "-100px" });
@@ -132,7 +136,7 @@ export const HeroParallax = ({
     <div
       ref={ref}
       className={cn(
-        "px-8 h-[200vh] lg:h-[240vh] xl:h-[300vh] 3xl:h-[310vh] -mt-12 pt-52 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
+        "px-8 h-[250vh] sm:h-[200vh] lg:h-[240vh] xl:h-[300vh] 3xl:h-[310vh] -mt-12 pt-52 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
       )}
     >
       {/* <Header /> */}
