@@ -1,9 +1,6 @@
 export default function ClientSection() {
   return (
-    <section
-      id="clients"
-      className="text-center mx-auto max-w-[80rem] px-6 md:px-8 lg:-mt-[60vh] 3xl:-mt-[130vh]"
-    >
+    <section id="clients" className="text-center mx-auto max-w-[80rem] px-6 md:px-8">
       <div className="py-14">
         <div className="mx-auto max-w-screen-xl px-4 md:px-8">
           <h2 className="text-center font-semibold text-gray-400 uppercase">

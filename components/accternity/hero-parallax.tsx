@@ -103,51 +103,40 @@ export const HeroParallax = ({
     thumbnail: string;
   }[];
 }) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
+  const firstRow = products.slice(0, 15);
+  const secondRow = products.slice(7, 15);
+  // const thirdRow = products.slice(10, 15);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start end", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = {
+    stiffness: 300,
+    damping: 30,
+    bounce: 100,
+  };
 
   const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
   const translateXReverse = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, -1000]),
     springConfig
   );
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]), springConfig);
-  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.9], [0.9, 1]), springConfig);
-  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0], [0, 0]), springConfig);
-  const translateY = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 0.15],
-      [
-        typeof window !== "undefined" && window.innerWidth > 768
-          ? -650
-          : typeof window !== "undefined" && window.innerWidth > 480
-          ? -150
-          : -200,
-        typeof window !== "undefined" && window.innerWidth > 768
-          ? 650
-          : typeof window !== "undefined" && window.innerWidth > 480
-          ? 150
-          : 0,
-      ]
-    ),
-    springConfig
-  );
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.55], [15, 0]), springConfig);
+  // const opacity = useSpring(useTransform(scrollYProgress, [0, 0.55], [0.2, 1]), springConfig);
+  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.55], [0, 0]), springConfig);
+  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.55], [0, 0]), springConfig);
+  // const inView = useInView(ref, {
+  //   once: true,
+  //   margin: "-100px",
+  // });
 
   return (
     <div
       ref={ref}
       className={cn(
-        "px-8 h-[1150px] sm:h-[200vh] lg:h-[240vh] xl:h-[300vh] 3xl:h-[310vh] -mt-12 pt-52 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
+        "px-8 h-max antialiased relative flex flex-col self-auto z-20 [perspective:2000px] [transform-style:preserve-3d]"
       )}
     >
       {/* <Header /> */}
@@ -155,26 +144,26 @@ export const HeroParallax = ({
         style={{
           rotateX,
           rotateZ,
-          translateY,
-          opacity,
+          // translateY,
+          // opacity,
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 sm:space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
           {firstRow.map((product) => (
             <ProductCard product={product} translate={translateX} key={product.title} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
+        {/* <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
           {secondRow.map((product) => (
             <ProductCard product={product} translate={translateXReverse} key={product.title} />
           ))}
-        </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 sm:space-x-20">
+        </motion.div> */}
+        {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
           {thirdRow.map((product) => (
             <ProductCard product={product} translate={translateX} key={product.title} />
           ))}
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </div>
   );
@@ -215,7 +204,7 @@ export const ProductCard = ({
       }}
       key={product.title}
       className={cn(
-        "group/product h-64 w-32 sm:h-96 sm:w-[30rem] relative flex-shrink-0",
+        "group/product h-64 w-32 sm:h-96 sm:w-[480px] relative flex-shrink-0",
         "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-3xl",
         // // light styles
         // "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
