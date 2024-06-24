@@ -112,7 +112,7 @@ export const HeroParallax = ({
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 100, damping: 30, bounce: 100 };
+  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
   const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
   const translateXReverse = useSpring(
@@ -147,7 +147,7 @@ export const HeroParallax = ({
     <div
       ref={ref}
       className={cn(
-        "px-8 h-[1550px] sm:h-[200vh] lg:h-[240vh] xl:h-[300vh] 3xl:h-[310vh] -mt-12 pt-52 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
+        "px-8 h-[1150px] sm:h-[200vh] lg:h-[240vh] xl:h-[300vh] 3xl:h-[310vh] -mt-12 pt-52 overflow-hidden  antialiased relative flex flex-col self-auto z-10"
       )}
     >
       {/* <Header /> */}
@@ -160,17 +160,17 @@ export const HeroParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 sm:space-x-20 mb-20">
           {firstRow.map((product) => (
             <ProductCard product={product} translate={translateX} key={product.title} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
           {secondRow.map((product) => (
             <ProductCard product={product} translate={translateXReverse} key={product.title} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 sm:space-x-20">
           {thirdRow.map((product) => (
             <ProductCard product={product} translate={translateX} key={product.title} />
           ))}
@@ -215,7 +215,7 @@ export const ProductCard = ({
       }}
       key={product.title}
       className={cn(
-        "group/product h-96 w-[30rem] relative flex-shrink-0",
+        "group/product h-64 w-32 sm:h-96 sm:w-[30rem] relative flex-shrink-0",
         "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-3xl",
         // // light styles
         // "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
@@ -224,11 +224,10 @@ export const ProductCard = ({
         "fancy-card"
       )}
     >
-      <Link href={product.link} className="block group-hover/product:shadow-2xl ">
+      <Link href={product.link} className="block group-hover/product:shadow-2xl">
         <Image
           src={product.thumbnail}
-          height="600"
-          width="600"
+          fill
           className="object-cover object-left-top absolute h-full w-full inset-0"
           alt={product.title}
         />
