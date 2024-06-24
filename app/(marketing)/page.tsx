@@ -16,6 +16,7 @@ export default async function Page() {
       <ClientSection />
       <SphereMask />
       <FeatureSection />
+      <SphereMask reverse />
       <TestimonialSection />
       <PricingSection />
       <CallToActionSection />

@@ -157,7 +157,7 @@ const features = [
     description: "Receive your coded websites in just a few business days, Monday to Friday.",
     href: "/",
     cta: "Communication done via Trello",
-    className: "col-span-3 lg:col-span-1",
+    className: "col-span-3 lg:col-span-2",
     background: (
       <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
         <CommandInput placeholder="Type a command or search..." />
@@ -181,31 +181,31 @@ const features = [
     description: "We deliver well-organized and well-documented source code, ready for deployment.",
     href: "/",
     cta: "Delivered in Next.js & Tailwind CSS",
-    className: "col-span-3 lg:col-span-1",
+    className: "col-span-3 lg:col-span-2",
     background: (
       <AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] w-[600px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
     ),
   },
-  // {
-  //   Icon: CalendarIcon,
-  //   name: "Flexible Plans",
-  //   description: "Pause or cancel your subscription anytime. No long-term commitment.",
-  //   className: "col-span-3 lg:col-span-1",
-  //   href: "/",
-  //   cta: "Learn more",
-  //   background: (
-  //     <Calendar
-  //       mode="single"
-  //       selected={new Date(2022, 4, 11, 0, 0, 0)}
-  //       className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
-  //     />
-  //   ),
-  // },
+  {
+    Icon: CalendarIcon,
+    name: "Flexible Plans",
+    description: "Pause or cancel your subscription anytime. No long-term commitment.",
+    className: "col-span-3 lg:col-span-1",
+    href: "/",
+    cta: "Learn more",
+    background: (
+      <Calendar
+        mode="single"
+        selected={new Date(2022, 4, 11, 0, 0, 0)}
+        className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
+      />
+    ),
+  },
 ];
 
 export function FeatureSection() {
   return (
-    <div className="z-50 relative max-w-[60rem] mx-auto px-8 lg:px-12 pt-12 w-full flex flex-col items-center justify-center">
+    <div className="z-50 relative max-w-[60rem] mx-auto px-8 mb-24 lg:mb-64 lg:px-12 pt-12 w-full flex flex-col items-center justify-center">
       <div className="">
         <div
           className={cn(
@@ -226,16 +226,11 @@ export function FeatureSection() {
         <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
       </p>
 
-      <BentoGrid className="gap-8 border-b pb-20 mb-20 border-b-white/10">
+      <BentoGrid>
         {features.map((feature, idx) => (
           <BentoCard key={idx} {...feature} />
         ))}
       </BentoGrid>
-      <h2 className="inline-block bg-gradient-to-br dark:from-white from-black from-30% dark:to-white/40 to-black/40 bg-clip-text -mt-4 pb-8 text-lg font-medium tracking-tighter text-balance text-center text-transparent lg:text-2xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-        {/* We take extra care to ensure your designs are flawlessly coded.{" "}
-        <br className="hidden md:block" /> */}
-        But don&apos;t take our word for it — here&apos;s what our clients say
-      </h2>
     </div>
   );
 }

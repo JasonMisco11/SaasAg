@@ -1,6 +1,10 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import Marquee from "./marquee";
+import { Globe } from "lucide-react";
+import { LampContainer } from "../accternity/lamp-divider";
+import { motion } from "framer-motion";
 
 export const Highlight = ({
   children,
@@ -131,33 +135,34 @@ const testimonials = [
 
 export function TestimonialSection() {
   return (
-    <section id="testimonials">
-      <div className="py-14">
-        <div className="mx-auto md:container md:px-8">
-          <h3 className="text-center text-sm font-semibold text-gray-600">TESTIMONIALS</h3>
-          <div className="relative mx-auto mt-6 max-w-[100vw] overflow-hidden">
-            <div
-              className={cn(
-                "flex w-full snap-x snap-mandatory flex-row gap-6 overflow-x-auto py-14",
+    <section className="pt-6 lg:pt-20 z-50 relative max-w-[60rem] mx-auto w-full">
+      <h2 className="inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+        {/* We take extra care to ensure your designs are flawlessly coded.{" "}
+        <br className="hidden md:block" /> */}
+        But don&apos;t take our word for it — here&apos;s what our clients say
+      </h2>
 
-                // no scrollbar
-                "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              )}
-            >
-              {/* Empty placeholder  */}
-              <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div>
-              <Marquee pauseOnHover className="[--duration:20s]">
-                {testimonials.map((card, idx) => (
-                  <TestimonialCard {...card} key={idx} />
-                ))}
-              </Marquee>
-              {/* Empty placeholder  */}
-              <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div>
-            </div>
-            <div className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-1/5 bg-gradient-to-r from-background md:block"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-1/5 bg-gradient-to-l from-background md:block"></div>
-          </div>
+      <div className="relative mx-auto mt-2 overflow-hidden">
+        <div
+          className={cn(
+            "flex w-full snap-x snap-mandatory flex-row gap-6 overflow-x-auto py-14",
+
+            // no scrollbar
+            "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          )}
+        >
+          {/* Empty placeholder  */}
+          {/* <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div> */}
+          <Marquee pauseOnHover className="[--duration:20s]">
+            {testimonials.map((card, idx) => (
+              <TestimonialCard {...card} key={idx} />
+            ))}
+          </Marquee>
+          {/* Empty placeholder  */}
+          {/* <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div> */}
         </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-1/5 bg-gradient-to-r from-background md:block"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-1/5 bg-gradient-to-l from-background md:block"></div>
       </div>
     </section>
   );
