@@ -126,7 +126,7 @@ export const HeroParallax = ({
     useTransform(
       scrollYProgress,
       [0, 0.15],
-      [-650, window.innerWidth > 768 ? 650 : window.innerWidth > 480 ? 10 : 150]
+      [-650, window.innerWidth > 768 ? 650 : window.innerWidth > 480 ? 150 : 10]
     ),
     springConfig
   );
