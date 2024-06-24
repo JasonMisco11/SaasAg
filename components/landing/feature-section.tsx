@@ -205,7 +205,7 @@ const features = [
 
 export function FeatureSection() {
   return (
-    <div className="z-50 relative max-w-[60rem] mx-auto px-12 pt-12 w-full flex flex-col items-center justify-center">
+    <div className="z-50 relative max-w-[60rem] mx-auto px-8 lg:px-12 pt-12 w-full flex flex-col items-center justify-center">
       <div className="">
         <div
           className={cn(
