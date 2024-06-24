@@ -178,7 +178,7 @@ const features = [
   {
     Icon: Share2Icon,
     name: "High-Quality Code",
-    description: "We deliver well-organized and documented source code, ready for deployment.",
+    description: "We deliver well-organized and well-documented source code, ready for deployment.",
     href: "/",
     cta: "Delivered in Next.js & Tailwind CSS",
     className: "col-span-3 lg:col-span-1",
@@ -231,11 +231,11 @@ export function FeatureSection() {
           <BentoCard key={idx} {...feature} />
         ))}
       </BentoGrid>
-      <p className="w-full text-left text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+      <h2 className="inline-block bg-gradient-to-br dark:from-white from-black from-30% dark:to-white/40 to-black/40 bg-clip-text -mt-4 pb-8 text-lg font-medium tracking-tighter text-balance text-center text-transparent lg:text-2xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
         {/* We take extra care to ensure your designs are flawlessly coded.{" "}
         <br className="hidden md:block" /> */}
-        But don&apos;t take our word for it—here&apos;s what our clients say.
-      </p>
+        But don&apos;t take our word for it — here&apos;s what our clients say
+      </h2>
     </div>
   );
 }
