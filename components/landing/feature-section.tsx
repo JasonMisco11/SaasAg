@@ -158,22 +158,22 @@ const features = [
     href: "/",
     cta: "Communication done via Trello",
     className: "col-span-3 lg:col-span-2",
-    background: (
-      <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>screenshot.png</CommandItem>
-            <CommandItem>bitcoin.pdf</CommandItem>
-            <CommandItem>finances.xlsx</CommandItem>
-            <CommandItem>logo.svg</CommandItem>
-            <CommandItem>keys.gpg</CommandItem>
-            <CommandItem>seed.txt</CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </Command>
-    ),
+    // background: (
+    //   <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
+    //     <CommandInput placeholder="Type a command or search..." />
+    //     <CommandList>
+    //       <CommandEmpty>No results found.</CommandEmpty>
+    //       <CommandGroup heading="Suggestions">
+    //         <CommandItem>screenshot.png</CommandItem>
+    //         <CommandItem>bitcoin.pdf</CommandItem>
+    //         <CommandItem>finances.xlsx</CommandItem>
+    //         <CommandItem>logo.svg</CommandItem>
+    //         <CommandItem>keys.gpg</CommandItem>
+    //         <CommandItem>seed.txt</CommandItem>
+    //       </CommandGroup>
+    //     </CommandList>
+    //   </Command>
+    // ),
   },
   {
     Icon: Share2Icon,
