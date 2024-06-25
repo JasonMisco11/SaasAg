@@ -72,62 +72,49 @@ export const TestimonialCard = ({
 
 const testimonials = [
   {
-    name: "Alex Rivera",
-    role: "CTO at InnovateTech",
+    name: "Roger",
+    role: "Hiring Manager @ Tank Builders Inc.",
     description: (
       <p>
-        The AI-driven analytics from #QuantumInsights have revolutionized our product development
-        cycle.
-        <Highlight>Insights are now more accurate and faster than ever.</Highlight> A game-changer
-        for tech companies.
+        <Highlight>Great freelancer</Highlight>
+        that I would work with again.
       </p>
     ),
   },
   {
-    name: "Samantha Lee",
-    role: "Marketing Director at NextGen Solutions",
+    name: "John Schoenith",
+    role: "CEO @ Eleven Twenty One LLC",
     description: (
       <p>
-        Implementing #AIStream&apos;s customer prediction model has drastically improved our
-        targeting strategy.
-        <Highlight>Seeing a 50% increase in conversion rates!</Highlight> Highly recommend their
-        solutions.
+        Ruben did a great job. <Highlight>He's a very talented React developer.</Highlight> Five
+        stars all the way.{" "}
       </p>
     ),
   },
   {
-    name: "Raj Patel",
-    role: "Founder & CEO at StartUp Grid",
+    name: "Christos Malamas",
+    role: "CTO @ Malamas Devs",
     description: (
       <p>
-        As a startup, we need to move fast and stay ahead. #CodeAI&apos;s automated coding assistant
-        helps us do just that.
-        <Highlight>Our development speed has doubled.</Highlight> Essential tool for any startup.
-      </p>
-    ),
-  },
-  {
-    name: "Emily Chen",
-    role: "Product Manager at Digital Wave",
-    description: (
-      <p>
-        #VoiceGen&apos;s AI-driven voice synthesis has made creating global products a breeze.
-        <Highlight>Localization is now seamless and efficient.</Highlight> A must-have for global
-        product teams.
-      </p>
-    ),
-  },
-  {
-    name: "Michael Brown",
-    role: "Data Scientist at FinTech Innovations",
-    description: (
-      <p>
-        Leveraging #DataCrunch&apos;s AI for our financial models has given us an edge in predictive
-        accuracy.
+        Reuben is{" "}
         <Highlight>
-          Our investment strategies are now powered by real-time data analytics.
+          fantastic developer with incredible work ethic and communication skills.
         </Highlight>{" "}
-        Transformative for the finance industry.
+        He always goes the extra mile when asked about task and he is honest about meeting
+        deliverable and deadlines. I will definitely work with him again.{" "}
+      </p>
+    ),
+  },
+  {
+    name: "Lalita",
+    role: "Hiring Manager @ HDB Financial Services Ltd.",
+    description: (
+      <p>
+        This was my very first ever project where I had to comb through talent and hire someone.
+        While I came across plenty of people who could likely have completed the project
+        successfully, I couldn’t t have been happier selecting Reuben for mine.{" "}
+        <Highlight>He is responsive, fast, flexible, and talented.</Highlight> I look forward to
+        being able to work with Reuben again.{" "}
       </p>
     ),
   },
@@ -135,12 +122,15 @@ const testimonials = [
 
 export function TestimonialSection() {
   return (
-    <section className="pt-6 lg:pt-20 z-50 relative max-w-[60rem] mx-auto w-full">
-      <h2 className="inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+    <section className="z-50 mb-14 lg:mb-64 relative max-w-[60rem] mx-auto w-full">
+      <h2 className="px-8 inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
         {/* We take extra care to ensure your designs are flawlessly coded.{" "}
         <br className="hidden md:block" /> */}
         But don&apos;t take our word for it — here&apos;s what our clients say
       </h2>
+      <p className="my-8 w-full text-center text-base text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+        Reviews taken from our Top Rated Upwork profile.{" "}
+      </p>
 
       <div className="relative mx-auto mt-2 overflow-hidden">
         <div
@@ -153,7 +143,7 @@ export function TestimonialSection() {
         >
           {/* Empty placeholder  */}
           {/* <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div> */}
-          <Marquee pauseOnHover className="[--duration:20s]">
+          <Marquee pauseOnHover className="[--duration:45s]">
             {testimonials.map((card, idx) => (
               <TestimonialCard {...card} key={idx} />
             ))}
