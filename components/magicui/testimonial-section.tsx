@@ -122,20 +122,20 @@ const testimonials = [
 
 export function TestimonialSection() {
   return (
-    <section className="z-50 mb-14 lg:mb-64 relative max-w-[60rem] mx-auto w-full">
-      <h2 className="px-8 inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+    <section className="z-50 mb-14 lg:mb-80 relative flex flex-col items-center justify-center">
+      <h2 className="max-w-[60rem] mx-auto px-8 inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
         {/* We take extra care to ensure your designs are flawlessly coded.{" "}
         <br className="hidden md:block" /> */}
         But don&apos;t take our word for it — here&apos;s what our clients say
       </h2>
-      <p className="px-8 my-8 w-full text-center text-base text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-        Reviews taken from our Top Rated Upwork profile.{" "}
+      <p className="max-w-[60rem] mx-auto px-8 my-8 w-full text-center text-base text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+        Verified reviews from our top-rated Upwork profile.{" "}
       </p>
 
       <div className="relative mx-auto mt-2 overflow-hidden">
         <div
           className={cn(
-            "flex w-full snap-x snap-mandatory flex-row gap-6 overflow-x-auto py-14",
+            "flex w-full snap-x snap-mandatory flex-row gap-6 overflow-x-auto pb-14",
 
             // no scrollbar
             "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -143,7 +143,7 @@ export function TestimonialSection() {
         >
           {/* Empty placeholder  */}
           {/* <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div> */}
-          <Marquee pauseOnHover className="[--duration:30s]">
+          <Marquee pauseOnHover className="[--duration:20s]">
             {testimonials.map((card, idx) => (
               <TestimonialCard {...card} key={idx} />
             ))}

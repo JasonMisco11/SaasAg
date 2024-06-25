@@ -205,8 +205,8 @@ const features = [
 
 export function FeatureSection() {
   return (
-    <div className="z-50 relative max-w-[60rem] mx-auto px-8 lg:px-12 pt-12 w-full flex flex-col items-center justify-center">
-      <div className="">
+    <div className="z-50 relative max-w-[80rem] mx-auto px-8 lg:px-12 pt-12 w-full flex flex-col items-center justify-center">
+      <div className="max-w-[60rem] mx-auto">
         <div
           className={cn(
             "inline-block w-fit relative top-0 left-0 mr-6 size-20 cursor-pointer overflow-hidden rounded-2xl border p-4"
@@ -221,12 +221,12 @@ export function FeatureSection() {
           Beautiful Design Means Nothing If It&apos;s Poorly Coded{" "}
         </h2>
       </div>
-      <p className="mb-7 lg:mb-14 w-full text-left text-base text-gray-400 md:text-2xl md:text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+      <p className="max-w-[60rem] mx-auto mb-7 lg:mb-14 w-full text-left text-base text-gray-400 md:text-2xl md:text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
         Unlimited coding for a fixed monthly fee. We hand-code websites
         <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
       </p>
 
-      <BentoGrid className="pb-32 border-b border-white/10 mb-28 ">
+      <BentoGrid className="max-w-[80rem] mx-auto pb-32 border-b border-white/10 mb-28 ">
         {features.map((feature, idx) => (
           <BentoCard key={idx} {...feature} />
         ))}
