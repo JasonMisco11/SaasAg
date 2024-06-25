@@ -128,7 +128,7 @@ export function TestimonialSection() {
         <br className="hidden md:block" /> */}
         But don&apos;t take our word for it — here&apos;s what our clients say
       </h2>
-      <p className="my-8 w-full text-center text-base text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+      <p className="px-8 my-8 w-full text-center text-base text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
         Reviews taken from our Top Rated Upwork profile.{" "}
       </p>
 
@@ -143,7 +143,7 @@ export function TestimonialSection() {
         >
           {/* Empty placeholder  */}
           {/* <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div> */}
-          <Marquee pauseOnHover className="[--duration:45s]">
+          <Marquee pauseOnHover className="[--duration:30s]">
             {testimonials.map((card, idx) => (
               <TestimonialCard {...card} key={idx} />
             ))}

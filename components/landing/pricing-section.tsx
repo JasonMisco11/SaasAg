@@ -58,12 +58,12 @@ export function PricingSection() {
   };
 
   return (
-    <section className="z-50 mt-20 mb-14 lg:mb-48 relative max-w-[60rem] mx-auto w-full">
-      <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-14 md:px-8">
+    <section className="z-50 mt-20  mb-14 lg:mb-48 relative max-w-[60rem] mx-auto w-full">
+      <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-8 py-14 md:px-8">
         <div className="mx-auto max-w-5xl text-center">
           {/* <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">Pricing</h4> */}
 
-          <h2 className="px-8 inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
+          <h2 className="inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
             Membership Levels{" "}
           </h2>
 
