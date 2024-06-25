@@ -205,7 +205,7 @@ const features = [
 
 export function FeatureSection() {
   return (
-    <div className="z-50 relative max-w-[80rem] mx-auto px-8 lg:px-12 pt-12 w-full flex flex-col items-center justify-center">
+    <div className="z-50 pb-32 relative max-w-[80rem] mx-auto px-8 lg:px-12 pt-12 w-full flex flex-col items-center justify-center">
       <div className="max-w-[60rem] mx-auto">
         <div
           className={cn(
@@ -226,7 +226,7 @@ export function FeatureSection() {
         <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
       </p>
 
-      <BentoGrid className="max-w-[80rem] mx-auto pb-32 border-b border-white/10 mb-28 ">
+      <BentoGrid className="max-w-[80rem] mx-auto">
         {features.map((feature, idx) => (
           <BentoCard key={idx} {...feature} />
         ))}
