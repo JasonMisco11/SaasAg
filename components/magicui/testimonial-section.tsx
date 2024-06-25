@@ -86,8 +86,8 @@ const testimonials = [
     role: "CEO @ Eleven Twenty One LLC",
     description: (
       <p>
-        Ruben did a great job. <Highlight>He's a very talented React developer.</Highlight> Five
-        stars all the way.{" "}
+        Ruben did a great job. <Highlight>He&apos;s a very talented React developer.</Highlight>{" "}
+        Five stars all the way.{" "}
       </p>
     ),
   },
