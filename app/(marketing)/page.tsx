@@ -23,8 +23,8 @@ export default async function Page() {
       <Particles
         className="absolute inset-0 -z-10"
         quantity={100}
-        ease={180}
-        size={0.1}
+        ease={300}
+        size={0.05}
         staticity={40}
         color={"#ffffff"}
       />

@@ -90,4 +90,16 @@
 
     @apply rounded-[32px] border-[1px] border-gray-700/60 bg-card shadow-[rgba(0,0,0,0.5)_0px_-3px_0px_0px_inset,rgb(45,45,45)_0px_0px_0px_2px_inset,rgba(0,0,0,0.6)_0px_4px_2px_0px_inset,rgba(0,0,0,0.4)_0px_0px_24px_4px_inset,rgba(0,0,0,0.8)_0px_1px_3px_0px];
   }
+  .fancy-card-white {
+    background: linear-gradient(rgba(247, 247, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
+    @apply rounded-[32px] border-[1px] border-gray-100/90 bg-card shadow-[rgba(0,0,0,0.05)_0px_-3px_0px_0px_inset,rgb(255,255,255)_0px_0px_0px_2px_inset,rgba(0,0,0,0.06)_0px_4px_2px_0px_inset,rgba(0,0,0,0.04)_0px_0px_24px_4px_inset,rgba(0,0,0,0.12)_0px_1px_3px_0px];
+  }
+
+  .fancy-button {
+    background-color: rgb(0, 0, 0);
+    border-radius: 32px;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px -3px 1px 0px inset,
+      rgba(0, 0, 0, 0.043) 0px 0.241451px 0.241451px 0px, rgba(0, 0, 0, 0.35) 0px 2px 2px 0px;
+  }
 }

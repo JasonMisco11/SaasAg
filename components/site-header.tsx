@@ -103,10 +103,11 @@ export function SiteHeader() {
             Agency
           </Link>
 
-          <div className="ml-auto flex h-full items-center">
-            <Link className="mr-6 text-sm" href="/signin">
+          {/* HIDE LOGIN / SIGNUP BUTTONS ON MOBILE */}
+          <div className="hidden md:flex ml-auto h-full items-center">
+            {/* <Link className="mr-6 text-sm" href="/signin">
               Log in
-            </Link>
+            </Link> */}
             <Link
               className={cn(
                 buttonVariants({
@@ -114,9 +115,9 @@ export function SiteHeader() {
                 }),
                 "mr-6 text-sm !px-4 !py-2"
               )}
-              href="/signup"
+              href="/login"
             >
-              Sign up
+              Log in
             </Link>
           </div>
           <button
@@ -135,7 +136,7 @@ export function SiteHeader() {
           variants={mobilenavbarVariant}
           animate={hamburgerMenuIsOpen ? "animate" : "exit"}
           className={cn(
-            `fixed left-0 top-0 z-50 h-screen w-full overflow-auto bg-background/70 backdrop-blur-[12px] `,
+            `fixed left-0 top-0 z-[60] h-screen w-full overflow-auto bg-background/70 backdrop-blur-[12px] `,
             {
               "pointer-events-none": !hamburgerMenuIsOpen,
             }
@@ -143,7 +144,7 @@ export function SiteHeader() {
         >
           <div className="container flex h-[3.5rem] items-center justify-between">
             <Link className="text-md flex items-center" href="/">
-              Magic UI
+              Agency
             </Link>
 
             <button

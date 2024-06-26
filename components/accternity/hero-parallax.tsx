@@ -122,7 +122,7 @@ export const HeroParallax = ({
     useTransform(
       scrollYProgress,
       [0, 0.9],
-      typeof window !== "undefined" && window.innerWidth < 768 ? [0, 1000] : [2000, 0]
+      typeof window !== "undefined" && window.innerWidth < 768 ? [0, 1000] : [1000, 0]
     ),
     springConfig
   );
@@ -130,7 +130,7 @@ export const HeroParallax = ({
     useTransform(
       scrollYProgress,
       [0, 0.9],
-      typeof window !== "undefined" && window.innerWidth < 768 ? [0, -1000] : [-2000, 0]
+      typeof window !== "undefined" && window.innerWidth < 768 ? [0, -1000] : [-1000, 0]
     ),
     springConfig
   );

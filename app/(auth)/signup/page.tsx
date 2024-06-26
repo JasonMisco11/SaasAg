@@ -29,8 +29,11 @@ export default function SignUpPage() {
         <div className="flex flex-col gap-2 text-center">
           {/* <Icons.logo className="mx-auto h-6 w-6" /> */}
           <h1 className="text-2xl font-semibold tracking-tight">
-            Welcome to Magic UI
+            Welcome to Agency!
           </h1>
+          <p className="text-sm text-muted-foreground">
+            Sign up for an account
+          </p>
           <p className="text-sm text-muted-foreground">
             Sign up for an account
           </p>

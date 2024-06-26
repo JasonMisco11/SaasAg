@@ -18,24 +18,24 @@ import { BentoCard, BentoGrid } from "../magicui/bento-grid";
 
 const files = [
   {
-    name: "bitcoin.pdf",
-    body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+    name: "Implement Header Component",
+    body: "Develop the header component as per the design provided in the Figma file, ensuring responsiveness and cross-browser compatibility.",
   },
   {
-    name: "finances.xlsx",
-    body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
+    name: "Create Responsive Grid",
+    body: "Build a responsive grid layout for the main content area, following the design specifications in the Figma file.",
   },
   {
-    name: "logo.svg",
-    body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
+    name: "Animate Hero Section",
+    body: "Implement animations for the hero section, including text and image transitions, as outlined in the Figma design.",
   },
   {
-    name: "keys.gpg",
-    body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
+    name: "Style Buttons",
+    body: "Style all buttons according to the design in the Figma file, ensuring consistency in padding, colors, and hover effects.",
   },
   {
-    name: "seed.txt",
-    body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
+    name: "Build Footer Component",
+    body: "Create the footer component with all links and social media icons, matching the design and ensuring it is fully responsive.",
   },
 ];
 
@@ -119,22 +119,22 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
 const features = [
   {
     Icon: InfinityIcon,
-    name: "Unlimited Requests",
+    name: "Task Board",
     description:
       "Submit as many coding requests as you need. Your first coded page will be ready within 48 hours.",
     href: "/",
-    cta: "Payment securely done via Stripe",
+    cta: "Communication done via Trello",
     className: "col-span-3 lg:col-span-1",
     background: (
       <Marquee
         pauseOnHover
-        className="absolute top-10 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
+        className="absolute top-10 [--duration:20s] transition-all duration-300 ease-out hover:blur-none group-hover:scale-105 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
       >
         {files.map((f, idx) => (
           <figure
             key={idx}
             className={cn(
-              "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
+              "relative w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
               "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
               "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
               "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
@@ -158,22 +158,9 @@ const features = [
     href: "/",
     cta: "Communication done via Trello",
     className: "col-span-3 lg:col-span-2",
-    // background: (
-    //   <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
-    //     <CommandInput placeholder="Type a command or search..." />
-    //     <CommandList>
-    //       <CommandEmpty>No results found.</CommandEmpty>
-    //       <CommandGroup heading="Suggestions">
-    //         <CommandItem>screenshot.png</CommandItem>
-    //         <CommandItem>bitcoin.pdf</CommandItem>
-    //         <CommandItem>finances.xlsx</CommandItem>
-    //         <CommandItem>logo.svg</CommandItem>
-    //         <CommandItem>keys.gpg</CommandItem>
-    //         <CommandItem>seed.txt</CommandItem>
-    //       </CommandGroup>
-    //     </CommandList>
-    //   </Command>
-    // ),
+    background: (
+      <AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] w-[600px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
+    ),
   },
   {
     Icon: Share2Icon,
@@ -197,7 +184,7 @@ const features = [
       <Calendar
         mode="single"
         selected={new Date(2022, 4, 11, 0, 0, 0)}
-        className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
+        className="absolute right-0 top-10 origin-top rounded-2xl border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
       />
     ),
   },
