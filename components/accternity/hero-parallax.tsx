@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
+import Lenis from "lenis";
 export const products = [
   {
     title: "Moonbeam",
@@ -103,23 +103,74 @@ export const HeroParallax = ({
     thumbnail: string;
   }[];
 }) => {
-  const targetRef = useRef(null);
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    lenis.on("scroll", (e) => {
+      console.log(e);
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
+  const firstRow = products.slice(0, 5);
+  const secondRow = products.slice(5, 10);
+  const thirdRow = products.slice(10, 15);
+  const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
-    target: targetRef,
+    target: ref,
+    offset: ["start start", "end start"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+
+  const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
+  const translateXReverse = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    springConfig
+  );
+  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.4], [15, 0]), springConfig);
+  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.2, 1]), springConfig);
+  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.2], [0, 0]), springConfig);
+  const translateY = useSpring(
+    useTransform(scrollYProgress, [0, 0.2, 0.4, 0.95], [-10, 10, -300, -100]),
+    springConfig
+  );
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">
-      <div className="bg-purple-500 sticky top-0 flex h-screen items-center overflow-hidden">
-        {/* <motion.div style={{ x }} className="flex gap-4">
-          {cards.map((card) => {
-            return <Card card={card} key={card.id} />;
-          })}
-        </motion.div> */}
-      </div>
-    </section>
+    <div ref={ref} className={cn("px-8 h-[300vh] antialiased relative z-20")}>
+      {/* <Header /> */}
+      <motion.div
+        style={{
+          rotateX,
+          rotateZ,
+          translateY,
+          // opacity,
+        }}
+        className="sticky top-20"
+      >
+        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
+          {firstRow.map((product) => (
+            <ProductCard product={product} translate={translateX} key={product.title} />
+          ))}
+        </motion.div>
+        <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
+          {secondRow.map((product) => (
+            <ProductCard product={product} translate={translateXReverse} key={product.title} />
+          ))}
+        </motion.div>
+        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
+          {thirdRow.map((product) => (
+            <ProductCard product={product} translate={translateX} key={product.title} />
+          ))}
+        </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
