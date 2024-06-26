@@ -22,9 +22,9 @@ export default async function Page() {
       <CallToActionSection />
       <Particles
         className="absolute inset-0 -z-10"
-        quantity={50}
-        ease={70}
-        size={0.05}
+        quantity={100}
+        ease={180}
+        size={0.1}
         staticity={40}
         color={"#ffffff"}
       />

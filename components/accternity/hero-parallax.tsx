@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import Lenis from "lenis";
+import { ReactLenis, useLenis } from "lenis/react";
 export const products = [
   {
     title: "Moonbeam",
@@ -103,16 +103,9 @@ export const HeroParallax = ({
     thumbnail: string;
   }[];
 }) => {
-  useEffect(() => {
-    const lenis = new Lenis();
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-  }, []);
+  const lenis = useLenis(({ scroll }) => {
+    // called every scroll
+  });
 
   const firstRow = products.slice(0, 7);
   const secondRow = products.slice(7, 15);
@@ -163,39 +156,51 @@ export const HeroParallax = ({
   );
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
-      )}
+    <ReactLenis
+      root
+      options={{
+        easing(x) {
+          const c1 = 1.70158;
+          const c3 = c1 + 1;
+
+          return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+        },
+      }}
     >
-      {/* <Header /> */}
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-        className="sticky top-20"
+      <div
+        ref={ref}
+        className={cn(
+          "px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
+        )}
       >
-        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
-          {firstRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
-          {secondRow.map((product) => (
-            <ProductCard product={product} translate={translateXReverse} key={product.title} />
-          ))}
-        </motion.div>
-        {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
+        {/* <Header /> */}
+        <motion.div
+          style={{
+            rotateX,
+            rotateZ,
+            translateY,
+            opacity,
+          }}
+          className="sticky top-20"
+        >
+          <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
+            {firstRow.map((product) => (
+              <ProductCard product={product} translate={translateX} key={product.title} />
+            ))}
+          </motion.div>
+          <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
+            {secondRow.map((product) => (
+              <ProductCard product={product} translate={translateXReverse} key={product.title} />
+            ))}
+          </motion.div>
+          {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
           {thirdRow.map((product) => (
             <ProductCard product={product} translate={translateX} key={product.title} />
           ))}
         </motion.div> */}
-      </motion.div>
-    </div>
+        </motion.div>
+      </div>
+    </ReactLenis>
   );
 };
 

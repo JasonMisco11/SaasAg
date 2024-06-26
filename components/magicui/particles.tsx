@@ -2,6 +2,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
+// Utility function to detect if the device is a phone
+const isPhone = () => /Mobi|Android/i.test(navigator.userAgent);
+
 interface MousePosition {
   x: number;
   y: number;
@@ -14,6 +17,8 @@ function MousePosition(): MousePosition {
   });
 
   useEffect(() => {
+    if (isPhone()) return; // Skip mouse movement logic on phones
+
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({ x: event.clientX, y: event.clientY });
     };
@@ -39,6 +44,7 @@ interface ParticlesProps {
   vx?: number;
   vy?: number;
 }
+
 function hexToRgb(hex: string): number[] {
   hex = hex.replace("#", "");
   const hexInt = parseInt(hex, 16);
@@ -82,7 +88,9 @@ const Particles: React.FC<ParticlesProps> = ({
   }, [color]);
 
   useEffect(() => {
-    onMouseMove();
+    if (!isPhone()) {
+      onMouseMove();
+    }
   }, [mousePosition.x, mousePosition.y]);
 
   useEffect(() => {
@@ -179,12 +187,7 @@ const Particles: React.FC<ParticlesProps> = ({
 
   const clearContext = () => {
     if (context.current) {
-      context.current.clearRect(
-        0,
-        0,
-        canvasSize.current.w,
-        canvasSize.current.h
-      );
+      context.current.clearRect(0, 0, canvasSize.current.w, canvasSize.current.h);
     }
   };
 
@@ -204,8 +207,7 @@ const Particles: React.FC<ParticlesProps> = ({
     start2: number,
     end2: number
   ): number => {
-    const remapped =
-      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
+    const remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
     return remapped > 0 ? remapped : 0;
   };
 
@@ -220,9 +222,7 @@ const Particles: React.FC<ParticlesProps> = ({
         canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = parseFloat(
-        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
-      );
+      const remapClosestEdge = parseFloat(remapValue(closestEdge, 0, 20, 0, 1).toFixed(2));
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;
         if (circle.alpha > circle.targetAlpha) {
@@ -234,11 +234,9 @@ const Particles: React.FC<ParticlesProps> = ({
       circle.x += circle.dx + vx;
       circle.y += circle.dy + vy;
       circle.translateX +=
-        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-        ease;
+        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) / ease;
       circle.translateY +=
-        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-        ease;
+        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) / ease;
 
       drawCircle(circle, true);
 
