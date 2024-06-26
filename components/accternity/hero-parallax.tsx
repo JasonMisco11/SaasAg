@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -103,69 +103,23 @@ export const HeroParallax = ({
     thumbnail: string;
   }[];
 }) => {
-  const firstRow = products.slice(0, 15);
-  const secondRow = products.slice(7, 15);
-  // const thirdRow = products.slice(10, 15);
-  const ref = React.useRef(null);
+  const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
+    target: targetRef,
   });
 
-  const springConfig = {
-    stiffness: 300,
-    damping: 30,
-    bounce: 100,
-  };
-
-  const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
-  const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig
-  );
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.55], [15, 0]), springConfig);
-  // const opacity = useSpring(useTransform(scrollYProgress, [0, 0.55], [0.2, 1]), springConfig);
-  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.55], [0, 0]), springConfig);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.55], [0, 0]), springConfig);
-  // const inView = useInView(ref, {
-  //   once: true,
-  //   margin: "-100px",
-  // });
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "px-8 h-max antialiased relative flex flex-col self-auto z-20 [perspective:2000px] [transform-style:preserve-3d]"
-      )}
-    >
-      {/* <Header /> */}
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          // translateY,
-          // opacity,
-        }}
-        className=""
-      >
-        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
-          {firstRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-        {/* <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
-          {secondRow.map((product) => (
-            <ProductCard product={product} translate={translateXReverse} key={product.title} />
-          ))}
+    <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">
+      <div className="bg-purple-500 sticky top-0 flex h-screen items-center overflow-hidden">
+        {/* <motion.div style={{ x }} className="flex gap-4">
+          {cards.map((card) => {
+            return <Card card={card} key={card.id} />;
+          })}
         </motion.div> */}
-        {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
-          {thirdRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div> */}
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 };
 
