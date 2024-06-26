@@ -170,7 +170,7 @@ export const HeroParallax = ({
       <div
         ref={ref}
         className={cn(
-          "px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
+          "animate-fade-in opacity-0 [--animation-delay:400ms] px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
         )}
       >
         {/* <Header /> */}
