@@ -126,24 +126,38 @@ export const HeroParallax = ({
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.9], window.innerWidth < 768 ? [0, 1000] : [2000, 0]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.9],
+      typeof window !== "undefined" && window.innerWidth < 768 ? [0, 1000] : [2000, 0]
+    ),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 0.9], window.innerWidth < 768 ? [0, -1000] : [-2000, 0]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.9],
+      typeof window !== "undefined" && window.innerWidth < 768 ? [0, -1000] : [-2000, 0]
+    ),
     springConfig
   );
   const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.4], [15, 0]), springConfig);
   const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.05, 1]), springConfig);
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], window.innerWidth < 768 ? [35, 0] : [-35, 0]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.2],
+      typeof window !== "undefined" && window.innerWidth < 768 ? [35, 0] : [-35, 0]
+    ),
     springConfig
   );
   const translateY = useSpring(
     useTransform(
       scrollYProgress,
       [0, 0.2, 0.4, 0.6, 0.8, 1],
-      window.innerWidth < 768 ? [-400, 150, 100, -100, 0, 0] : [-450, 300, 100, -100, 0, 0]
+      typeof window !== "undefined" && window.innerWidth < 768
+        ? [-400, 150, 100, -100, 0, 0]
+        : [-450, 300, 100, -100, 0, 0]
     ),
     springConfig
   );
