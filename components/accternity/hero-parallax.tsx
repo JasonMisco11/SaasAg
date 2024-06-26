@@ -156,8 +156,8 @@ export const HeroParallax = ({
       scrollYProgress,
       [0, 0.2, 0.4, 0.6, 0.8, 1],
       typeof window !== "undefined" && window.innerWidth < 768
-        ? [-400, 150, 100, -100, 0, 0]
-        : [-450, 300, 100, -100, 0, 0]
+        ? [-400, 150, 100, 0, -100, 0]
+        : [-450, 200, 100, 0, -100, 0]
     ),
     springConfig
   );
