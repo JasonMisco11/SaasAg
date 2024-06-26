@@ -15,7 +15,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="z-10 relative mx-auto mt-32 max-w-[80rem] px-6 text-center md:px-8 "
+      className="z-50 relative mx-auto mt-32 max-w-[80rem] px-6 text-center md:px-8 "
     >
       <div className="!z-50 relative">
         <div className="backdrop-filter-[12px] inline-flex h-7 items-center justify-between rounded-full border border-white/5 bg-white/10 px-3 text-xs text-white dark:text-black transition-all ease-in hover:cursor-pointer hover:bg-white/20 group gap-1 translate-y-[-1rem] animate-fade-in opacity-0">

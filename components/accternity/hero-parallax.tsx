@@ -114,39 +114,54 @@ export const HeroParallax = ({
     requestAnimationFrame(raf);
   }, []);
 
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
+  const firstRow = products.slice(0, 7);
+  const secondRow = products.slice(7, 15);
+  // const thirdRow = products.slice(10, 15);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start end", "end start"],
   });
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
-  const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
+  const translateX = useSpring(
+    useTransform(scrollYProgress, [0, 0.9], window.innerWidth < 768 ? [0, 1000] : [2000, 0]),
+    springConfig
+  );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 0.9], window.innerWidth < 768 ? [0, -1000] : [-2000, 0]),
     springConfig
   );
   const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.4], [15, 0]), springConfig);
-  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.2, 1]), springConfig);
-  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.2], [0, 0]), springConfig);
+  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.05, 1]), springConfig);
+  const rotateZ = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], window.innerWidth < 768 ? [35, 0] : [-35, 0]),
+    springConfig
+  );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.9], [-30, 300, 0, -300, 0]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.2, 0.4, 0.6, 0.8, 1],
+      window.innerWidth < 768 ? [-400, 150, 100, -100, 0, 0] : [-450, 300, 100, -100, 0, 0]
+    ),
     springConfig
   );
 
   return (
-    <div ref={ref} className={cn("px-8 h-[300vh] antialiased relative z-20")}>
+    <div
+      ref={ref}
+      className={cn(
+        "px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      )}
+    >
       {/* <Header /> */}
       <motion.div
         style={{
           rotateX,
           rotateZ,
           translateY,
-          // opacity,
+          opacity,
         }}
         className="sticky top-20"
       >
@@ -160,11 +175,11 @@ export const HeroParallax = ({
             <ProductCard product={product} translate={translateXReverse} key={product.title} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
+        {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
           {thirdRow.map((product) => (
             <ProductCard product={product} translate={translateX} key={product.title} />
           ))}
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </div>
   );
