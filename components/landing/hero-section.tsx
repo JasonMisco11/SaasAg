@@ -40,7 +40,7 @@ export default function HeroSection() {
         <Link
           href="#pricing"
           onClick={() => {
-            lenis.scrollTo("#pricing");
+            lenis?.scrollTo("#pricing");
           }}
           className={cn(
             buttonVariants(),
