@@ -65,7 +65,7 @@ export function PricingSection() {
   };
 
   return (
-    <section className="z-50 mt-20  mb-14 lg:mb-48 relative max-w-[80rem] mx-auto w-full">
+    <section id="pricing" className="z-50 mt-20  mb-14 lg:mb-48 relative max-w-[80rem] mx-auto w-full">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-8 py-14 md:px-8">
         <div className="max-w-[60rem] mx-auto text-center">
           {/* <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">Pricing</h4> */}

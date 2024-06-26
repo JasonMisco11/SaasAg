@@ -103,9 +103,9 @@ export const HeroParallax = ({
     thumbnail: string;
   }[];
 }) => {
-  const lenis = useLenis(({ scroll }) => {
-    // called every scroll
-  });
+  // const lenis = useLenis(({ scroll }) => {
+  //   // called every scroll
+  // });
 
   const firstRow = products.slice(0, 7);
   const secondRow = products.slice(7, 15);

@@ -2,16 +2,23 @@
 
 import { BorderBeam } from "@/components/magicui/border-beam";
 // import TextShimmer from "@/components/magicui/text-shimmer";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import ShinyButton from "../magicui/shiny-button";
 import TextShimmer from "../magicui/text-shimmer";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { useLenis } from "lenis/react";
 
 export default function HeroSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const lenis = useLenis(({ scroll }) => {
+    // called every scroll
+  });
+
   return (
     <section id="hero" className="relative mx-auto mt-32 max-w-[80rem] px-6 text-center md:px-8 ">
       <div className="!z-50 relative">
@@ -30,10 +37,21 @@ export default function HeroSection() {
           hand-code websites for detail-oriented founders. <br className="hidden md:block" /> Pause
           or cancel anytime.
         </p>
-        <Button className="translate-y-[-1rem] animate-fade-in gap-1 text-base md:text-xl text-white dark:text-black opacity-0 ease-in-out [--animation-delay:600ms]">
-          <span>See Plans </span>
-          <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
-        </Button>
+        <Link
+          href="#pricing"
+          onClick={() => {
+            lenis.scrollTo("#pricing");
+          }}
+          className={cn(
+            buttonVariants(),
+            "translate-y-[-1rem] animate-fade-in gap-1 text-base md:text-xl text-white dark:text-black opacity-0 ease-in-out [--animation-delay:600ms]"
+          )}
+        >
+          <>
+            See Plans
+            <ArrowRightIcon className="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+          </>
+        </Link>
       </div>
       <div
         ref={ref}
