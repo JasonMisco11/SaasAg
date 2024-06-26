@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/images/products/thumbnails/**",
       },
+      {
+        protocol: "https",
+        hostname: "magicui.design",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
