@@ -106,10 +106,6 @@ export const HeroParallax = ({
   useEffect(() => {
     const lenis = new Lenis();
 
-    lenis.on("scroll", (e) => {
-      console.log(e);
-    });
-
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -138,7 +134,7 @@ export const HeroParallax = ({
   const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.2, 1]), springConfig);
   const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.2], [0, 0]), springConfig);
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2, 0.4, 0.95], [-10, 10, -300, -100]),
+    useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.9], [0, 300, 0, -300, 0]),
     springConfig
   );
 
