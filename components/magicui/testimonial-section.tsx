@@ -122,7 +122,10 @@ const testimonials = [
 
 export function TestimonialSection() {
   return (
-    <section className="z-50 mb-14 lg:mb-80 relative flex flex-col items-center justify-center">
+    <section
+      id="testimonials"
+      className="z-50 mb-14 lg:mb-80 relative flex flex-col items-center justify-center"
+    >
       <hr className="max-w-[80rem]  mb-24 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-500/30 to-neutral-200/0" />
       <h2 className="max-w-[60rem] mx-auto px-8 inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
         {/* We take extra care to ensure your designs are flawlessly coded.{" "}
