@@ -147,7 +147,7 @@ export function TestimonialSection() {
         >
           {/* Empty placeholder  */}
           {/* <div className="size-72 shrink-0 md:h-60 md:min-w-96"></div> */}
-          <Marquee pauseOnHover className="[--duration:20s]">
+          <Marquee className="[--duration:20s]">
             {testimonials.map((card, idx) => (
               <TestimonialCard {...card} key={idx} />
             ))}
