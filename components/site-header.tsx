@@ -3,6 +3,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { AlignJustify, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -11,22 +12,22 @@ const menuItem = [
   {
     id: 1,
     label: "Features",
-    href: "/features",
+    href: "#features",
+  },
+  {
+    id: 3,
+    label: "Testimonials",
+    href: "#testimonials",
   },
   {
     id: 2,
     label: "Pricing",
-    href: "#",
-  },
-  {
-    id: 3,
-    label: "Careers",
-    href: "#",
+    href: "#pricing",
   },
   {
     id: 4,
     label: "Contact Us",
-    href: "#",
+    href: "#contact",
   },
 ];
 
@@ -94,6 +95,10 @@ export function SiteHeader() {
       window.removeEventListener("resize", closeHamburgerNavigation);
     };
   }, [setHamburgerMenuIsOpen]);
+
+  const lenis = useLenis(({ scroll }) => {
+    // called every scroll
+  });
 
   return (
     <>
@@ -172,6 +177,10 @@ export function SiteHeader() {
                     hamburgerMenuIsOpen ? "[&_a]:translate-y-0" : ""
                   }`}
                   href={item.href}
+                  onClick={() => {
+                    lenis?.scrollTo(item.href);
+                    setHamburgerMenuIsOpen(false);
+                  }}
                 >
                   {item.label}
                 </Link>

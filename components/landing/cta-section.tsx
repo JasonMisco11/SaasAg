@@ -4,15 +4,7 @@ import Marquee from "@/components/magicui/marquee";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, useAnimation, useInView } from "framer-motion";
-import {
-  BarChart,
-  ChevronRight,
-  File,
-  Globe,
-  HeartHandshake,
-  Rss,
-  Shield,
-} from "lucide-react";
+import { BarChart, ChevronRight, File, Globe, HeartHandshake, Rss, Shield } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 
@@ -64,10 +56,7 @@ const shuffleArray = (array: any[]) => {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
     // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
   return array;
 };
@@ -124,15 +113,11 @@ export default function CallToActionSection() {
   }, []);
 
   return (
-    <section id="cta">
+    <section id="contact">
       <div className="py-14">
         <div className="flex w-full flex-col items-center justify-center">
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-            <Marquee
-              reverse
-              className="-delay-[200ms] [--duration:10s]"
-              repeat={5}
-            >
+            <Marquee reverse className="-delay-[200ms] [--duration:10s]" repeat={5}>
               {randomTiles1.map((review, idx) => (
                 <Card key={idx} {...review} />
               ))}
@@ -142,11 +127,7 @@ export default function CallToActionSection() {
                 <Card key={idx} {...review} />
               ))}
             </Marquee>
-            <Marquee
-              reverse
-              className="-delay-[200ms] [--duration:20s]"
-              repeat={5}
-            >
+            <Marquee reverse className="-delay-[200ms] [--duration:20s]" repeat={5}>
               {randomTiles1.map((review, idx) => (
                 <Card key={idx} {...review} />
               ))}
@@ -156,11 +137,7 @@ export default function CallToActionSection() {
                 <Card key={idx} {...review} />
               ))}
             </Marquee>
-            <Marquee
-              reverse
-              className="-delay-[200ms] [--duration:20s]"
-              repeat={5}
-            >
+            <Marquee reverse className="-delay-[200ms] [--duration:20s]" repeat={5}>
               {randomTiles3.map((review, idx) => (
                 <Card key={idx} {...review} />
               ))}
@@ -175,12 +152,8 @@ export default function CallToActionSection() {
                 <HeartHandshake className="mx-auto size-16 text-black dark:text-white lg:size-24" />
               </div>
               <div className="z-10 mt-4 flex flex-col items-center text-center text-primary">
-                <h1 className="text-3xl font-bold lg:text-4xl">
-                  Stop wasting time on design.
-                </h1>
-                <p className="mt-2">
-                  Start your 7-day free trial. No credit card required.
-                </p>
+                <h1 className="text-3xl font-bold lg:text-4xl">Stop wasting time on design.</h1>
+                <p className="mt-2">Start your 7-day free trial. No credit card required.</p>
                 <Link
                   href="#"
                   className={cn(

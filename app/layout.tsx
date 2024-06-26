@@ -11,7 +11,8 @@ const fontSans = FontSans({
 });
 export const metadata: Metadata = {
   title: "Agency",
-  description: "We are a team of 3 that are passionate about building frontends experiences that are",
+  description:
+    "We are a team of 3 that are passionate about building frontends experiences that are",
 };
 
 export default function RootLayout({
