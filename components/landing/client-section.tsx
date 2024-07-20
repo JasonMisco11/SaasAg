@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icons } from "../ui/icons";
+import Marquee from "../magicui/marquee";
 
 const companies = [
   {
@@ -45,19 +46,23 @@ export default function ClientSection() {
             Our code quality impresses even the toughest critics
           </h2>
           <div className="mt-12">
-            <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
-              {companies.map((company) => (
-                <li key={company.id}>
-                  <Link
-                    key={company.id}
-                    href={company.link}
-                    target="_blank"
-                    className="group/icon text-white !transition-all !duration-200 !ease-in-out hover:scale-110 hover:text-gray-400 active:translate-y-[1px]"
-                  >
-                    <company.icon className="flex h-12 w-auto fill-white hover:fill-gray-400" />
-                  </Link>
-                </li>
-              ))}
+            <ul className="mx-auto relative w-fit flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
+              <Marquee className="max-w-[64rem] [--duration:40s]">
+                {companies.map((company) => (
+                  <li key={company.id}>
+                    <Link
+                      key={company.id}
+                      href={company.link}
+                      target="_blank"
+                      className="group/icon text-white !transition-all !duration-200 !ease-in-out hover:scale-110 hover:text-gray-400 active:translate-y-[1px]"
+                    >
+                      <company.icon className="flex h-12 w-auto fill-white hover:fill-gray-400" />
+                    </Link>
+                  </li>
+                ))}
+              </Marquee>
+              <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-white dark:from-black"></div>
+              <div className="pointer-events-none absolute inset-y-0 right-0 h-full w-1/3 bg-gradient-to-l from-white dark:from-black"></div>
             </ul>
           </div>
         </div>

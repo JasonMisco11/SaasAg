@@ -113,6 +113,7 @@ export const HeroParallax = ({
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
+    // start of the target meets the end of the viewport [start end]
     offset: ["start end", "end start"],
   });
 
@@ -149,58 +150,58 @@ export const HeroParallax = ({
       scrollYProgress,
       [0, 0.2, 0.4, 0.6, 0.8, 1],
       typeof window !== "undefined" && window.innerWidth < 768
-        ? [-400, 150, 100, 0, -100, 0]
-        : [-450, 200, 100, 0, -100, 0]
+        ? [-400, -100, 100, 0, -100, 0]
+        : [-450, -100, 100, 0, -100, 0]
     ),
     springConfig
   );
 
   return (
-    <ReactLenis
-      root
-      options={{
-        easing(x) {
-          const c1 = 1.70158;
-          const c3 = c1 + 1;
+    // <ReactLenis
+    //   root
+    //   options={{
+    //     easing(x) {
+    //       const c1 = 1.70158;
+    //       const c3 = c1 + 1;
 
-          return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
-        },
-      }}
+    //       return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+    //     },
+    //   }}
+    // >
+    <div
+      ref={ref}
+      className={cn(
+        "animate-fade-in opacity-0 [--animation-delay:400ms] px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      )}
     >
-      <div
-        ref={ref}
-        className={cn(
-          "animate-fade-in opacity-0 [--animation-delay:400ms] px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
-        )}
+      {/* <Header /> */}
+      <motion.div
+        style={{
+          rotateX,
+          rotateZ,
+          translateY,
+          opacity,
+        }}
+        className="sticky top-20"
       >
-        {/* <Header /> */}
-        <motion.div
-          style={{
-            rotateX,
-            rotateZ,
-            translateY,
-            opacity,
-          }}
-          className="sticky top-20"
-        >
-          <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
-            {firstRow.map((product) => (
-              <ProductCard product={product} translate={translateX} key={product.title} />
-            ))}
-          </motion.div>
-          <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
-            {secondRow.map((product) => (
-              <ProductCard product={product} translate={translateXReverse} key={product.title} />
-            ))}
-          </motion.div>
-          {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
+        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
+          {firstRow.map((product) => (
+            <ProductCard product={product} translate={translateX} key={product.title} />
+          ))}
+        </motion.div>
+        <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
+          {secondRow.map((product) => (
+            <ProductCard product={product} translate={translateXReverse} key={product.title} />
+          ))}
+        </motion.div>
+        {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
           {thirdRow.map((product) => (
             <ProductCard product={product} translate={translateX} key={product.title} />
           ))}
         </motion.div> */}
-        </motion.div>
-      </div>
-    </ReactLenis>
+      </motion.div>
+    </div>
+    // </ReactLenis>
   );
 };
 
