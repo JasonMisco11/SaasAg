@@ -24,18 +24,16 @@ export default function HeroSection() {
       <div className="!z-50 relative">
         <div className="backdrop-filter-[12px] inline-flex h-7 items-center justify-between rounded-full border border-white/5 bg-white/10 px-3 text-xs text-white dark:text-black transition-all ease-in hover:cursor-pointer hover:bg-white/20 group gap-1 translate-y-[-1rem] animate-fade-in opacity-0">
           <TextShimmer className="text-xs inline-flex text-nowrap items-center justify-center flex-nowrap rounded-full">
-            <span>✨ Limited-Time Introductory Offer</span>
+            <span>✨ Best Offer</span>
             <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
           </TextShimmer>
         </div>
         <h1 className="bg-gradient-to-br dark:from-white leading-[56px] lg:leading-[112px] from-black from-30% dark:to-white/40 to-black/40 bg-clip-text py-8 lg:py-12 text-5xl font-medium tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-          We Code Your Stunning Web Designs
-          <br className="hidden md:block" /> Pixel-Perfectly
+          One Tap, 
+          <br className="hidden md:block" /> Infinite Connections.
         </h1>
         <p className="mb-10 lg:mb-14 text-base text-gray-400 md:text-2xl md:text-balance translate-y-[-1rem] leading-[32px] lg:leading-[40px] animate-fade-in opacity-0 [--animation-delay:400ms]">
-          Frontend development for a fixed monthly fee. <br className="hidden md:block" /> We
-          hand-code websites for detail-oriented founders. <br className="hidden md:block" /> Pause
-          or cancel anytime.
+          Transform physical encounters into digital conversions. Our smart cards provide a physical gateway to bespoke, hand-coded landing pages designed for engagement. <br className="hidden md:block" /> Eliminate paper waste with a dynamic digital profile for a flat monthly fee. Pause or cancel your service whenever you choose.. 
         </p>
         <Link
           href="#pricing"
