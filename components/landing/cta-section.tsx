@@ -176,7 +176,7 @@ export default function CallToActionSection() {
               </div>
               <div className="z-10 mt-4 flex flex-col items-center text-center text-primary">
                 <h1 className="text-3xl font-bold lg:text-4xl">
-                  The last business card you'll ever need.
+                  The last business card you will ever need.
                 </h1>
                 <p className="mt-2 text-neutral-400">
                   Ditch the paper. Tap to share your world instantly.
