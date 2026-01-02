@@ -1,4 +1,4 @@
-import { HeroParallax, products } from "@/components/accternity/hero-parallax";
+import { HeroParallax} from "@/components/accternity/hero-parallax";
 import ClientSection from "@/components/landing/client-section";
 import CallToActionSection from "@/components/landing/cta-section";
 import { FeatureSection } from "@/components/landing/feature-section";
@@ -12,7 +12,7 @@ export default async function Page() {
   return (
     <>
       <HeroSection />
-      <HeroParallax products={products} />
+      <HeroParallax />
       <ClientSection />
       <SphereMask />
       <FeatureSection />
@@ -20,7 +20,7 @@ export default async function Page() {
       <SphereMask reverse />
       <PricingSection />
       <CallToActionSection />
-      <Particles
+      <Particles 
         className="absolute inset-0 -z-10"
         quantity={100}
         ease={300}

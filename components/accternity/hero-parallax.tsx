@@ -1,266 +1,128 @@
 "use client";
-import React, { useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  MotionValue,
-  inView,
-  useInView,
-} from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { ReactLenis, useLenis } from "lenis/react";
-export const products = [
-  {
-    title: "Moonbeam",
-    link: "https://gomoonbeam.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
-  },
-  {
-    title: "Cursor",
-    link: "https://cursor.so",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/cursor.png",
-  },
-  {
-    title: "Rogue",
-    link: "https://userogue.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/rogue.png",
-  },
 
-  {
-    title: "Editorially",
-    link: "https://editorially.org",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/editorially.png",
-  },
-  {
-    title: "Editrix AI",
-    link: "https://editrix.ai",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/editrix.png",
-  },
-  {
-    title: "Pixel Perfect",
-    link: "https://app.pixelperfect.quest",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
-  },
+export const HeroParallax = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  {
-    title: "Algochurn",
-    link: "https://algochurn.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
-  },
-  {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
-  },
-  {
-    title: "Tailwind Master Kit",
-    link: "https://tailwindmasterkit.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
-  },
-  {
-    title: "SmartBridge",
-    link: "https://smartbridgetech.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
-  },
-  {
-    title: "Renderwork Studio",
-    link: "https://renderwork.studio",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
-  },
-
-  {
-    title: "Creme Digital",
-    link: "https://cremedigital.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
-  },
-  {
-    title: "Golden Bells Academy",
-    link: "https://goldenbellsacademy.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
-  },
-  {
-    title: "Invoker Labs",
-    link: "https://invoker.lol",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/invoker.png",
-  },
-  {
-    title: "E Free Invoice",
-    link: "https://efreeinvoice.com",
-    thumbnail: "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
-  },
-];
-
-export const HeroParallax = ({
-  products,
-}: {
-  products: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  }[];
-}) => {
-  // const lenis = useLenis(({ scroll }) => {
-  //   // called every scroll
-  // });
-
-  const firstRow = products.slice(0, 7);
-  const secondRow = products.slice(7, 15);
-  // const thirdRow = products.slice(10, 15);
-  const ref = React.useRef(null);
+  // 1. Track scroll progress
   const { scrollYProgress } = useScroll({
-    target: ref,
-    // start of the target meets the end of the viewport [start end]
-    offset: ["start end", "end start"],
+    target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  // 2. Smooth the scroll input (essential for 3D rotations)
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 200,
+    damping: 20,
+    restDelta: 0.001
+  });
 
-  const translateX = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 0.9],
-      typeof window !== "undefined" && window.innerWidth < 768 ? [0, 1000] : [1000, 0]
-    ),
-    springConfig
-  );
-  const translateXReverse = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 0.9],
-      typeof window !== "undefined" && window.innerWidth < 768 ? [0, -1000] : [-1000, 0]
-    ),
-    springConfig
-  );
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.4], [15, 0]), springConfig);
-  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.05, 1]), springConfig);
-  const rotateZ = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 0.2],
-      typeof window !== "undefined" && window.innerWidth < 768 ? [35, 0] : [-35, 0]
-    ),
-    springConfig
-  );
-  const translateY = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 0.2, 0.4, 0.6, 0.8, 1],
-      typeof window !== "undefined" && window.innerWidth < 768
-        ? [-400, -100, 100, 0, -100, 0]
-        : [-450, -100, 100, 0, -100, 0]
-    ),
-    springConfig
-  );
+  // --- TRANSFORMATION LOGIC ---
+
+  // PHASE 1: Lift from Horizontal (Table) to Vertical
+  // [0% to 20%]: Lifts up
+  const rotateX = useTransform(smoothProgress, [0, 0.2], [75, 0]);
+
+  // PHASE 2: The "Cool Pose" (Tilt Sideways like reference image)
+  // [20% to 40%]: Tilts Z to -25deg
+  // [70% to 100%]: Straightens back to 0deg
+  const rotateZ = useTransform(smoothProgress, [0.2, 0.4, 0.7, 1], [0, -25, -25, 0]);
+
+  // PHASE 3: The Spin (Show Back then Front)
+  // [40% to 100%]: Full 360 spin
+  const rotateY = useTransform(smoothProgress, [0.4, 1], [0, 360]);
+
+  // SCALE: Zoom in slightly during the "Pose" phase for emphasis
+  const scale = useTransform(smoothProgress, [0, 0.4, 1], [0.8, 1.1, 1]);
+
+  // OPACITY: Fade in text only after lifting
+  const textOpacity = useTransform(smoothProgress, [0.1, 0.3], [0, 1]);
 
   return (
-    // <ReactLenis
-    //   root
-    //   options={{
-    //     easing(x) {
-    //       const c1 = 1.70158;
-    //       const c3 = c1 + 1;
-
-    //       return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
-    //     },
-    //   }}
-    // >
-    <div
-      ref={ref}
-      className={cn(
-        "animate-fade-in opacity-0 [--animation-delay:400ms] px-8 h-[300vh] antialiased relative z-20 self-auto [perspective:1000px] [transform-style:preserve-3d]"
-      )}
+    <div 
+      ref={containerRef} 
+      className="h-[400vh] w-full relative bg-neutral-950 flex flex-col items-center"
     >
-      {/* <Header /> */}
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-        className="sticky top-20"
-      >
-        <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20 mb-20">
-          {firstRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-8 sm:space-x-20 ">
-          {secondRow.map((product) => (
-            <ProductCard product={product} translate={translateXReverse} key={product.title} />
-          ))}
-        </motion.div>
-        {/* <motion.div className="flex flex-row-reverse gap-x-8 sm:gap-x-20">
-          {thirdRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div> */}
-      </motion.div>
-    </div>
-    // </ReactLenis>
-  );
-};
+      <div className="sticky top-0 h-screen flex items-center justify-center perspective-container">
+        
+        {/* 3D Scene Container */}
+        {/* perspective-1000px gives the 3D depth. Lower number = more dramatic 3D effect */}
+        <div className="relative [perspective:1000px]">
+          
+          <motion.div
+            style={{
+              rotateX,
+              rotateY,
+              rotateZ,
+              scale,
+              transformStyle: "preserve-3d", // MANDATORY: Keeps faces 3D during spin
+            }}
+            className="relative w-[320px] h-[200px] md:w-[500px] md:h-[315px] rounded-2xl shadow-2xl"
+          >
+            {/* --- FRONT FACE --- */}
+            <div 
+              className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden border border-white/10"
+              style={{ backfaceVisibility: "hidden" }} // Hides this side when facing away
+            >
+              <Image 
+                src="https://res.cloudinary.com/dshe5kflb/image/upload/v1767353466/Black_and_Purple_Modern_Company_Business_Card_-_1_htwsbq.jpg" 
+                alt="Smart Card Front"
+                fill
+                className="object-cover"
+                priority
+              />
+              
+              {/* Glossy Reflection Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent opacity-40 pointer-events-none" />
+            </div>
 
-export const Header = () => {
-  return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-        The Ultimate <br /> development studio
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        We build beautiful products with the latest technologies and frameworks. We are a team of
-        passionate developers and designers that love to build amazing products.
-      </p>
-    </div>
-  );
-};
+            {/* --- BACK FACE --- */}
+            <div 
+              className="absolute inset-0 w-full h-full bg-black rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center"
+              style={{ 
+                backfaceVisibility: "hidden", 
+                transform: "rotateY(180deg)" // Initially rotated to face backwards
+              }} 
+            >
+               <div className="absolute inset-0 bg-neutral-900">
+                  <Image 
+                    src="https://res.cloudinary.com/dshe5kflb/image/upload/v1767355916/Black_and_Purple_Modern_Company_Business_Card_-_2_1_gz4nma.jpg" 
+                    alt="Card Back"
+                    fill
+                    className="object-cover opacity-60"
+                  />
+               </div>
 
-export const ProductCard = ({
-  product,
-  translate,
-}: {
-  product: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  };
-  translate: MotionValue<number>;
-}) => {
-  return (
-    <motion.div
-      style={{
-        x: translate,
-      }}
-      whileHover={{
-        y: -20,
-      }}
-      key={product.title}
-      className={cn(
-        "group/product h-64 w-32 sm:h-96 sm:w-[480px] relative flex-shrink-0",
-        "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-3xl",
-        // // light styles
-        // "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-        // // dark styles
-        // "transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]"
-        "fancy-card"
-      )}
-    >
-      <Link href={product.link} className="block group-hover/product:shadow-2xl">
-        <Image
-          src={product.thumbnail}
-          fill
-          className="object-cover object-left-top absolute h-full w-full inset-0"
-          alt={product.title}
-        />
-      </Link>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-        {product.title}
-      </h2>
-    </motion.div>
+               {/* "SCAN ME" Content */}
+               <div className="relative z-10 flex flex-col items-center animate-pulse">
+                  <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-lg mb-2 flex items-center justify-center border border-white/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-white">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-white font-mono font-bold text-xl tracking-widest uppercase">
+                    Scan Me
+                  </h3>
+               </div>
+            </div>
+
+          </motion.div>
+
+          {/* Floater Text */}
+          <motion.div 
+            style={{ opacity: textOpacity }}
+            className="absolute -bottom-28 left-0 right-0 text-center"
+          >
+            <p className="text-neutral-500 text-xs font-semibold uppercase tracking-[0.2em]">
+               Smart Business Card
+            </p>
+          </motion.div>
+
+        </div>
+      </div>
+    </div>
   );
 };
