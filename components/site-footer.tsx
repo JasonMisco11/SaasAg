@@ -82,12 +82,11 @@ export function SiteFooter() {
                 className="h-8 w-8 text-primary"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Agency
+                JaseCards
               </span>
             </Link>
             <p className="max-w-xs">
-              We are a team of 3 that are passionate about building frontends experiences that are
-              both beautiful and functional.
+              Creating smart networking experiences that are both beautifully designed and powerful in function.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-3">
@@ -129,7 +128,7 @@ export function SiteFooter() {
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             Copyright © {new Date().getFullYear()}{" "}
             <Link href="/" className="cursor-pointer">
-              Reuben Rapose
+              Jason Cards
             </Link>
             . All Rights Reserved.
           </span>

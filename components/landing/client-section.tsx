@@ -4,34 +4,34 @@ import Marquee from "../magicui/marquee";
 
 const companies = [
   {
-    id: "neatmethod",
-    name: "NeatMethod",
+    id: "highstar",
+    name: "HighStar",
     link: "https://neatmethod.com/",
     icon: Icons.neatMethodLogo,
   },
 
   {
-    id: "dav-ai",
-    name: "DavAI",
+    id: "unlimited-solutions",
+    name: "Unlimited-Solutions",
     link: "https://dav-ai.com/",
     icon: Icons.davaiCompanyLogo,
   },
 
   {
-    id: "monkedao",
-    name: "MonkeDAO",
+    id: "alog",
+    name: "ALOG",
     link: "https://monkedao.io/",
     icon: Icons.monkeDaoCompanyLogo,
   },
   {
-    id: "cc",
-    name: "Clear Collectibles",
+    id: "sabre-guard",
+    name: "Sabre-Guard",
     link: "https://clearcollectibles.io/",
     icon: Icons.ccCompanyLogo,
   },
   {
-    id: "dks",
-    name: "Dead King Society",
+    id: "pinpam",
+    name: "Pinpam",
     link: "https://www.deadkingsociety.io/",
     icon: Icons.dksCompanyLogo,
   },
@@ -43,7 +43,7 @@ export default function ClientSection() {
       <div className="py-14">
         <div className="mx-auto max-w-screen-xl px-4 md:px-8">
           <h2 className="mb-10 lg:mb-14 text-base text-gray-400 md:text-2xl text-balance translate-y-[-1rem] leading-[32px] lg:leading-[40px] animate-fade-in opacity-0 [--animation-delay:400ms]">
-            Our code quality impresses even the toughest critics
+            The last business card you will ever need, built to impress at every tap.
           </h2>
           <div className="mt-12">
             <ul className="mx-auto relative w-fit flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
