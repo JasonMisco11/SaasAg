@@ -25,7 +25,7 @@ const footerNavs = [
     label: "Community",
     items: [
       {
-        href: "/",
+        href: "https://discord.gg/VF6mt3vZ",
         name: "Discord",
       },
       {
@@ -33,7 +33,7 @@ const footerNavs = [
         name: "Twitter",
       },
       {
-        href: "mailto:hello@chatcollect.com",
+        href: "mailto:jasonmisco11@gmail.com",
         name: "Email",
       },
     ],
@@ -86,7 +86,8 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="max-w-xs">
-              Creating smart networking experiences that are both beautifully designed and powerful in function.
+              Creating smart networking experiences that are both beautifully designed and powerful
+              in function.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-3">
