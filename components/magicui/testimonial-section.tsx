@@ -17,7 +17,7 @@ export const Highlight = ({
     <span
       className={cn(
         "bg-cyan-600/20 p-1 py-0.5 font-bold text-cyan-600 dark:bg-cyan-600/20 dark:text-cyan-600",
-        className
+        className,
       )}
     >
       {children}
@@ -48,7 +48,7 @@ export const TestimonialCard = ({
       " border border-neutral-200 bg-white",
       // dark styles
       "dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
-      className
+      className,
     )}
     {...props} // Spread the rest of the props here
   >
@@ -72,49 +72,43 @@ export const TestimonialCard = ({
 
 const testimonials = [
   {
-    name: "Roger",
-    role: "Hiring Manager @ Tank Builders Inc.",
+    name: "Sarah Jenkins",
+    role: "Real Estate Agent @ LuxHomes",
     description: (
       <p>
-        <Highlight>Great freelancer</Highlight>
-        that I would work with again.
+        I used to carry a stack of business cards. Now I just tap my phone.
+        <Highlight>It's a great conversation starter</Highlight> and people are always impressed.
       </p>
     ),
   },
   {
-    name: "John Schoenith",
-    role: "CEO @ Eleven Twenty One LLC",
+    name: "AMEL Derrick",
+    role: "Operations Director @ Pinpam ",
     description: (
       <p>
-        Ruben did a great job. <Highlight>He&apos;s a very talented React developer.</Highlight>{" "}
-        Five stars all the way.{" "}
+        We switched our entire team to smart cards.
+        <Highlight>It's saved us thousands on printing</Highlight> and it aligns perfectly with our
+        fashion brand.
       </p>
     ),
   },
   {
-    name: "Christos Malamas",
-    role: "CTO @ Malamas Devs",
+    name: "Honour Alajemba",
+    role: "Law Consultant",
     description: (
       <p>
-        Reuben is{" "}
-        <Highlight>
-          fantastic developer with incredible work ethic and communication skills.
-        </Highlight>{" "}
-        He always goes the extra mile when asked about task and he is honest about meeting
-        deliverable and deadlines. I will definitely work with him again.{" "}
+        The landing page is beautiful. It's not just a contact card; it's a
+        <Highlight>mini-portfolio that showcases my work perfectly.</Highlight> my clients love it.
       </p>
     ),
   },
   {
-    name: "Lalita",
-    role: "Hiring Manager @ HDB Financial Services Ltd.",
+    name: "Abraham Adote",
+    role: "Founder @ UnlimitedSolutions",
     description: (
       <p>
-        This was my very first ever project where I had to comb through talent and hire someone.
-        While I came across plenty of people who could likely have completed the project
-        successfully, I couldn’t t have been happier selecting Reuben for mine.{" "}
-        <Highlight>He is responsive, fast, flexible, and talented.</Highlight> I look forward to
-        being able to work with Reuben again.{" "}
+        Setting it up was a breeze. I can update my info anytime without reprinting anything.
+        <Highlight>Highly recommend for networking professionals.</Highlight>
       </p>
     ),
   },
@@ -130,10 +124,10 @@ export function TestimonialSection() {
       <h2 className="max-w-[60rem] mx-auto px-8 inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
         {/* We take extra care to ensure your designs are flawlessly coded.{" "}
         <br className="hidden md:block" /> */}
-        But don&apos;t take our word for it — here&apos;s what our clients say
+        Join thousands of professionals upgrading their network.
       </h2>
       <p className="max-w-[60rem] mx-auto px-8 my-8 w-full text-center text-base text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-        Verified reviews from our top-rated Upwork profile.{" "}
+        See what our users are saying about the future of business cards.{" "}
       </p>
 
       <div className="relative mx-auto mt-2 overflow-hidden">
@@ -142,7 +136,7 @@ export function TestimonialSection() {
             "flex w-full snap-x snap-mandatory flex-row gap-6 overflow-x-auto pb-14",
 
             // no scrollbar
-            "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           )}
         >
           {/* Empty placeholder  */}

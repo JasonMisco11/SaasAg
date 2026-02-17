@@ -18,37 +18,51 @@ export const toHumanPrice = (price: number, decimals: number = 2) => {
 const demoPrices = [
   {
     id: "price_1",
-    name: "Stadard Plan",
-    description: "One request at a time. Pause or cancel anytime.",
+    name: "Starter",
+    description: "Perfect for individuals starting their digital journey.",
     features: [
-      "One request at a time",
-      "Average 48 hour delivery",
-      "HTML & TailwindCSS work only",
-      "Unlimited users",
-      "Unlimited animations",
-      "Easy credit-card payments",
-      "Pause or cancel anytime",
+      "1 Smart Business Card",
+      "Digital Profile (Bio Link)",
+      "Contact Management Integration",
+      "Basic Analytics",
+      "SEO Basics",
+      "Email Support",
     ],
-    monthlyPrice: 249,
-    yearlyPrice: 999,
+    monthlyPrice: 29,
+    yearlyPrice: 290,
     isMostPopular: false,
   },
   {
     id: "price_2",
-    name: "Pro Plan",
-    description: "Two requests at a time. Pause or cancel anytime.",
+    name: "Professional",
+    description: "The complete package for freelancers and consultants.",
     features: [
-      "Two requests at a time",
-      "Average 48 hour delivery",
-      "Next.js and integrations with various Headless CMSs",
-      "Unlimited users",
-      "Unlimited animations",
-      "Easy credit-card payments",
-      "Pause or cancel anytime",
+      "1 Premium Metal Card",
+      "Hand-Coded Single Page Website",
+      "Custom Domain Name",
+      "Advanced Analytics",
+      "Priority Support",
+      "QR Code Generator",
     ],
-    monthlyPrice: 399,
-    yearlyPrice: 1499,
+    monthlyPrice: 99,
+    yearlyPrice: 990,
     isMostPopular: true,
+  },
+  {
+    id: "price_3",
+    name: "Business",
+    description: "Scalable solution for growing teams and agencies.",
+    features: [
+      "3 Smart Business Cards",
+      "5-Page Bespoke Website",
+      "CRM Integration",
+      "Team Dashboard",
+      "Monthly Content Updates",
+      "Dedicated Account Manager",
+    ],
+    monthlyPrice: 249,
+    yearlyPrice: 2490,
+    isMostPopular: false,
   },
 ];
 
@@ -65,17 +79,20 @@ export function PricingSection() {
   };
 
   return (
-    <section id="pricing" className="z-50 mt-20  mb-14 lg:mb-48 relative max-w-[80rem] mx-auto w-full">
+    <section
+      id="pricing"
+      className="z-50 mt-20  mb-14 lg:mb-48 relative max-w-[80rem] mx-auto w-full"
+    >
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-8 py-14 md:px-8">
         <div className="max-w-[60rem] mx-auto text-center">
           {/* <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">Pricing</h4>  */}
 
           <h2 className="inline-block bg-gradient-to-br dark:from-white text-center from-black from-30% dark:to-white/40 to-black/40 bg-clip-text text-3xl font-medium tracking-tighter text-transparent text-balance sm:text-4xl md:text-5xl lg:text-6xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-            Membership Levels{" "}
+            Simple, Transparent Pricing
           </h2>
 
           <p className="mt-8 w-full text-center text-base text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-            Choose a plan that&apos;s right for you{" "}
+            Invest in your professional image with a plan that scales.
           </p>
         </div>
 
@@ -102,7 +119,7 @@ export function PricingSection() {
                 {
                   "!border-2 !border-neutral-700 !shadow-lg !shadow-neutral-500 dark:!border-neutral-400 dark:!shadow-neutral-600":
                     price.isMostPopular,
-                }
+                },
               )}
             >
               <div className="flex items-center justify-start text-left">
@@ -149,7 +166,7 @@ export function PricingSection() {
               <Button
                 className={cn(
                   "group relative w-full gap-2 overflow-hidden text-lg justify-between font-semibold !px-4 tracking-tighter",
-                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2"
+                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
                 )}
                 disabled={isLoading}
                 onClick={() => void onSubscribeClick(price.id)}

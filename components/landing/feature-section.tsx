@@ -1,18 +1,9 @@
 "use client";
 
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
-import { CalendarIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
-import { Globe, InfinityIcon, Share2Icon } from "lucide-react";
+import { Calendar as CalendarLowIcon, Globe, Leaf, Monitor, Smartphone } from "lucide-react";
 import { AnimatedBeamMultipleOutputDemo } from "../magicui/animated-beam-multiple-outputs";
 import { BentoCard, BentoGrid } from "../magicui/bento-grid";
 
@@ -91,7 +82,7 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
         // light styles
         "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
         // dark styles
-        "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]"
+        "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
       )}
     >
       <div className="flex flex-row items-center gap-3">
@@ -118,12 +109,12 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
 
 const features = [
   {
-    Icon: InfinityIcon,
-    name: "Task Board",
+    Icon: Smartphone,
+    name: "Tap to Connect",
     description:
-      "Submit as many coding requests as you need. Your first coded page will be ready within 48 hours.",
+      "Share your digital profile instantly with a single tap. Compatible with all modern smartphones.",
     href: "/",
-    cta: "Communication done via Trello",
+    cta: "Learn about NFC",
     className: "col-span-3 lg:col-span-1",
     background: (
       <Marquee
@@ -137,7 +128,7 @@ const features = [
               "relative w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
               "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
               "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-              "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+              "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none",
             )}
           >
             <div className="flex flex-row items-center gap-2">
@@ -152,40 +143,43 @@ const features = [
     ),
   },
   {
-    Icon: InputIcon,
-    name: "Quick Turnaround",
-    description: "Receive your coded websites in just a few business days, Monday to Friday.",
+    Icon: Monitor,
+    name: "Custom Digital Profile",
+    description:
+      "Stand out with a bespoke, hand-coded landing page that perfectly matches your brand identity.",
     href: "/",
-    cta: "Communication done via Trello",
+    cta: "View examples",
     className: "col-span-3 lg:col-span-2",
     background: (
       <AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] w-[600px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
     ),
   },
   {
-    Icon: Share2Icon,
-    name: "High-Quality Code",
-    description: "We deliver well-organized and well-documented source code, ready for deployment.",
+    Icon: CalendarLowIcon,
+    name: "Instant Booking",
+    description:
+      "Let clients schedule meetings directly from your digital profile. Seamless integration with your calendar.",
     href: "/",
-    cta: "Delivered in Next.js & Tailwind CSS",
+    cta: "Try booking demo",
     className: "col-span-3 lg:col-span-2",
-    background: (
-      <AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] w-[600px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
-    ),
-  },
-  {
-    Icon: CalendarIcon,
-    name: "Flexible Plans",
-    description: "Pause or cancel your subscription anytime. No long-term commitment.",
-    className: "col-span-3 lg:col-span-1",
-    href: "/",
-    cta: "Learn more",
     background: (
       <Calendar
         mode="single"
         selected={new Date(2022, 4, 11, 0, 0, 0)}
-        className="absolute right-0 top-10 origin-top rounded-2xl border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
+        className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
       />
+    ),
+  },
+  {
+    Icon: Leaf,
+    name: "Sustainable Solution",
+    description:
+      "Significantly reduce paper waste. One smart card lasts a lifetime and can be updated infinitely.",
+    className: "col-span-3 lg:col-span-1",
+    href: "/",
+    cta: "Go Green",
+    background: (
+      <div className="absolute right-0 top-0 h-[300px] w-full bg-gradient-to-t from-neutral-100 to-transparent dark:from-neutral-900" />
     ),
   },
 ];
@@ -199,7 +193,7 @@ export function FeatureSection() {
       <div className="max-w-[60rem] mx-auto">
         <div
           className={cn(
-            "inline-block w-fit relative top-0 left-0 mr-6 size-20 cursor-pointer overflow-hidden rounded-2xl border p-4"
+            "inline-block w-fit relative top-0 left-0 mr-6 size-20 cursor-pointer overflow-hidden rounded-2xl border p-4",
           )}
         >
           <Globe className="size-full" />
@@ -208,12 +202,13 @@ export function FeatureSection() {
         </div>
 
         <h2 className="inline-block bg-gradient-to-br dark:from-white text-left from-black from-30% dark:to-white/40 to-black/40 bg-clip-text pt-12 pb-8 text-3xl font-medium tracking-tighter text-transparent md:text-balance sm:text-6xl md:text-5xl lg:text-7xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-          Beautiful Design Means Nothing If It&apos;s Poorly Coded{" "}
+          The Last Business Card You&apos;ll Ever Need
         </h2>
       </div>
       <p className="max-w-[60rem] mx-auto mb-7 lg:mb-14 w-full text-left text-base text-gray-400 md:text-2xl md:text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-        Unlimited coding for a fixed monthly fee. We hand-code websites
-        <br className="hidden md:block" /> for detail-oriented agencies. Pause or cancel anytime.
+        Combine the physical impact of a smart card with the digital versatility of a bespoke
+        website.
+        <br className="hidden md:block" />{" "}
       </p>
 
       <BentoGrid className="max-w-[80rem] mx-auto">
