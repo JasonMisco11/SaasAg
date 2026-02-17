@@ -77,7 +77,8 @@ const testimonials = [
     description: (
       <p>
         I used to carry a stack of business cards. Now I just tap my phone.
-        <Highlight>It's a great conversation starter</Highlight> and people are always impressed.
+        <Highlight>It&apos;s a great conversation starter</Highlight> and people are always
+        impressed.
       </p>
     ),
   },
@@ -87,8 +88,8 @@ const testimonials = [
     description: (
       <p>
         We switched our entire team to smart cards.
-        <Highlight>It's saved us thousands on printing</Highlight> and it aligns perfectly with our
-        fashion brand.
+        <Highlight>It&apos;s saved us thousands on printing</Highlight> and it aligns perfectly with
+        our fashion brand.
       </p>
     ),
   },
@@ -97,7 +98,7 @@ const testimonials = [
     role: "Law Consultant",
     description: (
       <p>
-        The landing page is beautiful. It's not just a contact card; it's a
+        The landing page is beautiful. It&apos;s not just a contact card; it&apos;s a
         <Highlight>mini-portfolio that showcases my work perfectly.</Highlight> my clients love it.
       </p>
     ),

@@ -1,14 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  CSSProperties,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { CSSProperties, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 
 interface MousePosition {
   x: number;
@@ -51,11 +44,7 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
   useEffect(() => {
     init();
     containerRef.current &&
-      setBoxes(
-        Array.from(containerRef.current.children).map(
-          (el) => el as HTMLElement,
-        ),
-      );
+      setBoxes(Array.from(containerRef.current.children).map((el) => el as HTMLElement));
   }, []);
 
   useEffect(() => {
@@ -69,6 +58,7 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
 
   useEffect(() => {
     onMouseMove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mousePosition]);
 
   const init = () => {
@@ -89,10 +79,8 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
       mouse.current.x = x;
       mouse.current.y = y;
       boxes.forEach((box) => {
-        const boxX =
-          -(box.getBoundingClientRect().left - rect.left) + mouse.current.x;
-        const boxY =
-          -(box.getBoundingClientRect().top - rect.top) + mouse.current.y;
+        const boxX = -(box.getBoundingClientRect().left - rect.left) + mouse.current.x;
+        const boxY = -(box.getBoundingClientRect().top - rect.top) + mouse.current.y;
         box.style.setProperty("--mouse-x", `${boxX}px`);
         box.style.setProperty("--mouse-y", `${boxY}px`);
 
@@ -207,11 +195,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
       {children}
 
       {/* Background */}
-      <div
-        className={
-          "absolute inset-[1px] -z-20 rounded-2xl bg-white dark:bg-black/95"
-        }
-      />
+      <div className={"absolute inset-[1px] -z-20 rounded-2xl bg-white dark:bg-black/95"} />
     </div>
   );
 };
