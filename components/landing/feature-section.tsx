@@ -9,24 +9,24 @@ import { BentoCard, BentoGrid } from "../magicui/bento-grid";
 
 const files = [
   {
-    name: "Implement Header Component",
-    body: "Develop the header component as per the design provided in the Figma file, ensuring responsiveness and cross-browser compatibility.",
+    name: "Design Smart Card Layout",
+    body: "Craft a sleek digital card layout that reflects your brand and keeps key details effortless to scan.",
   },
   {
-    name: "Create Responsive Grid",
-    body: "Build a responsive grid layout for the main content area, following the design specifications in the Figma file.",
+    name: "Enable Tap-to-Share",
+    body: "Set up instant sharing so contacts can open your profile, socials, and booking link with one tap.",
   },
   {
-    name: "Animate Hero Section",
-    body: "Implement animations for the hero section, including text and image transitions, as outlined in the Figma design.",
+    name: "Sync Contact Details",
+    body: "Connect your updated contact information, portfolio links, and call-to-action buttons in one place.",
   },
   {
-    name: "Style Buttons",
-    body: "Style all buttons according to the design in the Figma file, ensuring consistency in padding, colors, and hover effects.",
+    name: "Add Booking Flow",
+    body: "Make scheduling simple with a built-in calendar flow that helps leads book meetings without friction.",
   },
   {
-    name: "Build Footer Component",
-    body: "Create the footer component with all links and social media icons, matching the design and ensuring it is fully responsive.",
+    name: "Track Card Engagement",
+    body: "Monitor scans, clicks, and conversions so you can keep improving how your smart business card performs.",
   },
 ];
 
