@@ -43,12 +43,12 @@ export function AnimatedBeamMultipleOutputDemo({ className }: { className?: stri
       <div className="flex h-full w-full flex-row items-stretch justify-between gap-10">
         <div className="flex flex-col justify-center">
           <Circle ref={div7Ref}>
-            <Icons.user />
+           
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
           <Circle ref={div6Ref} className="h-16 w-16">
-            <Icons.openai />
+              <Icons.user />
           </Circle>
         </div>
         <div className="flex flex-col justify-center gap-2">
